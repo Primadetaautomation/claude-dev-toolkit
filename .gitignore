@@ -1,0 +1,34 @@
+# Claude Configuration Gitignore
+
+# Local settings that shouldn't be shared
+settings.local.json
+
+# Temporary/cache directories
+shell-snapshots/
+todos/
+statsig/
+test-scenarios/
+
+# macOS files
+.DS_Store
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Node modules if any
+node_modules/
+
+# Package lock files (keep package.json though)
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# IDE files
+.vscode/
+.idea/

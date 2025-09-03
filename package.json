@@ -1,0 +1,74 @@
+{
+  "name": "claude-context-management-system",
+  "version": "1.0.0",
+  "description": "Dynamic Context Window Management System for Claude Code Multi-Agent Setup",
+  "main": "agent-tools/context-aware-executor.js",
+  "scripts": {
+    "context:start": "node agent-tools/context-aware-executor.js",
+    "context:analyze": "node agent-tools/context-aware-executor.js analyze",
+    "context:stats": "node agent-tools/context-aware-executor.js stats",
+    "monitor:start": "node agent-tools/context-monitor.js start",
+    "monitor:status": "node agent-tools/context-monitor.js status",
+    "monitor:dashboard": "node agent-tools/context-monitor.js dashboard",
+    "monitor:insights": "node agent-tools/context-monitor.js insights",
+    "context:test": "node test-scenarios/context-escalation-tests.js",
+    "context:validate": "npm run context:test && npm run monitor:status",
+    "playwright:context-test": "node agent-tools/context-aware-executor.js execute playwright-test-agent '{\"type\":\"testing\",\"complexity\":\"complex\",\"scope\":\"full-project\",\"dependencies\":\"many\",\"dataVolume\":\"large\",\"content\":\"Create comprehensive E2E tests for a large web application with multiple browser configurations\"}'",
+    "system:init": "npm run context:validate && echo '✅ Context Management System initialized'",
+    "system:status": "npm run monitor:status && npm run context:stats",
+    "logs:usage": "tail -f .claude/context-usage.jsonl",
+    "logs:alerts": "tail -f .claude/context-alerts.jsonl",
+    "logs:escalations": "tail -f .claude/context-escalations.jsonl",
+    "cleanup:logs": "rm -f .claude/context-*.jsonl .claude/monitoring-*.jsonl",
+    "install:tools": "chmod +x agent-tools/*.js && echo '✅ Context tools permissions set'"
+  },
+  "bin": {
+    "context-executor": "./agent-tools/context-aware-executor.js",
+    "context-monitor": "./agent-tools/context-monitor.js"
+  },
+  "keywords": [
+    "claude",
+    "context-management",
+    "multi-agent",
+    "ai",
+    "automation",
+    "cost-optimization"
+  ],
+  "author": "Claude Code Context Management System",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "local-claude-setup"
+  },
+  "config": {
+    "contextConfigPath": "./.claude/agent-context-config.json",
+    "defaultContext": "32K",
+    "monitoringEnabled": true
+  },
+  "claudeCode": {
+    "contextTiers": {
+      "32K": 32000,
+      "200K": 200000,
+      "1M": 1000000
+    },
+    "agents": [
+      "master-orchestrator",
+      "context-manager",
+      "playwright-test-agent",
+      "senior-fullstack-developer",
+      "security-specialist",
+      "solutions-architect",
+      "qa-testing-engineer",
+      "devops-deployment-engineer"
+    ]
+  }
+}
