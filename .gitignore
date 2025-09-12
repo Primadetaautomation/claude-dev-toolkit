@@ -20,8 +20,7 @@ test-scenarios/
 # Node modules if any
 node_modules/
 
-# Package lock files (keep package.json though)
-package-lock.json
+# Yarn lock file (we use npm, not yarn)
 yarn.lock
 
 # Temporary files
