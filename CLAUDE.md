@@ -338,15 +338,18 @@ Na elke code delivery:
 ## 20 — Agent Integration Protocols
 
 ### **Agent Selection Matrix**
-| Task Type | Primary Agent | Context Tier | Auto-Trigger |
-|-----------|--------------|--------------|--------------|
-| API Development | backend-specialist | 32K-200K | Yes |
-| Context Management | context-manager | 32K | Always |
-| Memory/Documentation | session-memory | 32K | Always |
-| Security Review | security-specialist | 200K | On deploy |
-| Testing | qa-testing-engineer | 200K | After code |
-| Performance | load-stress-test | 200K | Pre-deploy |
-| Architecture | solutions-architect | 200K-1M | On design |
+| Task Type | Primary Agent | Context Tier | Auto-Trigger | Context7 |
+|-----------|--------------|--------------|--------------|----------|
+| API Development | backend-specialist | 32K-200K | Yes | ✅ |
+| Context Management | context-manager | 32K | Always | ⚙️ |
+| Memory/Documentation | session-memory | 32K | Always | 📝 |
+| Security Review | security-specialist | 200K | On deploy | ✅ |
+| Testing | qa-testing-engineer | 200K | After code | ✅ |
+| Performance | load-stress-test | 200K | Pre-deploy | ✅ |
+| Architecture | solutions-architect | 200K-1M | On design | ✅ |
+| Frontend Dev | frontend-specialist | 32K-200K | Yes | ✅ |
+| ML/AI Integration | ml-ai-integration | 32K-200K | Yes | ✅ |
+| Data Engineering | data-engineer | 32K-200K | Yes | ✅ |
 
 ### **Agent Communication**
 - **AGENT-1 (MUST)** Use structured JSON for inter-agent messages.
@@ -385,6 +388,46 @@ agent_request = {
 - **PERF-7 (SHOULD)** Track success rates per agent.
 - **PERF-8 (MUST)** Monitor context escalation patterns.
 - **PERF-9 (SHOULD)** Optimize frequently used agent paths.
+
+---
+
+## 21 — External Documentation Integration (Context7)
+
+### **Real-time Documentation Access**
+- **CTX7-1 (MUST)** Configure Context7 MCP server in Claude Code/Cursor.
+- **CTX7-2 (SHOULD)** Add "use context7" for external library documentation.
+- **CTX7-3 (MUST)** Use API key for production (100 req/min vs 10 req/min).
+- **CTX7-4 (SHOULD)** Cache documentation for 1 hour to optimize performance.
+- **CTX7-5 (MUST)** Track Context7 usage in session-memory for handover.
+
+### **Library Documentation Strategy**
+- **LIB-1 (MUST)** Use Context7 for framework/library-specific code.
+- **LIB-2 (SHOULD)** Specify versions when critical (e.g., "React 18", "Next.js 14").
+- **LIB-3 (MUST)** Fall back to training data if Context7 unavailable.
+- **LIB-4 (SHOULD)** Batch documentation requests for related libraries.
+
+### **Token Optimization with Context7**
+- **TOK-1 (SHOULD)** Use Context7's 5000 token default for docs.
+- **TOK-2 (MUST)** Stay within 32K tier when using Context7.
+- **TOK-3 (SHOULD)** Avoid context escalation for documentation needs.
+- **TOK-4 (MUST)** Monitor token usage via Context7 responses.
+
+### **Agent-Specific Integration**
+| Agent | Context7 Usage | Example Libraries |
+|-------|----------------|-------------------|
+| backend-specialist | Always | Express, FastAPI, NestJS, Prisma |
+| frontend-specialist | Always | React, Vue, Next.js, Tailwind |
+| ml-ai-integration | Always | OpenAI, LangChain, Transformers |
+| data-engineer | Always | Pandas, Spark, Airflow, dbt |
+| security-specialist | On-demand | Auth0, JWT, OAuth libraries |
+| qa-testing-engineer | On-demand | Jest, Playwright, Cypress |
+
+### **Implementation Checklist**
+- [ ] Install Context7 MCP server
+- [ ] Configure API key in mcp.json
+- [ ] Test with "use context7" trigger
+- [ ] Update agent prompts to include Context7
+- [ ] Document in session-memory when used
 
 ---
 
@@ -434,6 +477,7 @@ FOLLOW-UP:
 - **QAPI**: API development standards checklist.
 - **QMEMORY**: Session memory & handover checklist.
 - **QAGENT**: Agent selection & integration checklist.
+- **QCONTEXT7**: Context7 documentation fetch checklist.
 
 ---
 
@@ -455,4 +499,4 @@ FOLLOW-UP:
 
 ---
 
-*Versie 3.0 - Enhanced with API Standards, Context Management & Agent Integration*
+*Versie 3.1 - Enhanced with API Standards, Context Management, Agent Integration & Context7 MCP*

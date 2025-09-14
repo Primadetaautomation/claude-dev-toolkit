@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schemas.claude.ai/mcp/v1/config.json",
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "description": "Real-time documentation provider for 6000+ libraries and frameworks",
+      "headers": {
+        "CONTEXT7_API_KEY": "YOUR_API_KEY_HERE"
+      },
+      "features": [
+        "up-to-date-documentation",
+        "version-specific-docs",
+        "token-optimization",
+        "library-detection"
+      ],
+      "supportedLibraries": [
+        "React", "Vue", "Next.js", "Express", "FastAPI", 
+        "NestJS", "Tailwind", "PostgreSQL", "MongoDB",
+        "OpenAI", "Anthropic", "Hugging Face", "LangChain",
+        "Apache Spark", "Airflow", "Pandas", "NumPy"
+      ]
+    }
+  },
+  "configuration": {
+    "defaultTokenLimit": 5000,
+    "minimumTokens": 1000,
+    "autoDetectLibraries": true,
+    "cacheDocumentation": true,
+    "cacheDuration": "1h"
+  },
+  "integration": {
+    "withAgents": [
+      "backend-specialist",
+      "frontend-specialist",
+      "ml-ai-integration",
+      "data-engineer",
+      "senior-fullstack-developer"
+    ],
+    "triggerPhrase": "use context7",
+    "fallbackBehavior": "use-training-data"
+  }
+}
