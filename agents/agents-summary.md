@@ -1,31 +1,22 @@
-# CLAUDE Framework Specialized Agents Summary
+# CLAUDE Framework Specialized Agents Summary with QA-Guard Integration
 
 ## Overview
-This directory contains 29 specialized sub-agents designed to work with the CLAUDE Framework for comprehensive software development projects. Each agent follows CLAUDE standards and provides expertise in their specific domain.
+This directory contains 11 specialized sub-agents enhanced with QA-Guard quality control capabilities. Each agent now includes integrated factual accuracy validation, security assessment, and 0-100 scoring with GO/FIX/BLOCK verdicts. All agents work with the CLAUDE Framework for comprehensive software development projects while ensuring enterprise-grade quality through systematic validation.
 
 ## Agent Roster
 
-### 1. 🎯 Master Orchestrator
+### 1. 🎯 Master Orchestrator (QA-Guard Enhanced)
 **File:** `master-orchestrator.md`
-**Primary Role:** Project coordination and quality assurance across multiple development phases
-**Use For:** Complex projects requiring multiple specialists, enterprise-grade quality standards, systematic CLAUDE Framework enforcement
+**Primary Role:** Project coordination with integrated QA-Guard quality control across all development phases
+**Use For:** Complex projects requiring multiple specialists, enterprise-grade quality standards, systematic CLAUDE Framework enforcement with quality scoring
 **Key Responsibilities:**
-- Coordinate multiple specialist agents
-- Ensure enterprise-grade quality standards
+- Coordinate multiple specialist agents with QA-Guard validation
+- Ensure enterprise-grade quality standards through 0-100 scoring
 - Systematic enforcement of CLAUDE Framework guidelines
+- **QA-Guard Integration**: Mandatory quality gates with GO/FIX/BLOCK verdicts
+- **Quality Threshold Enforcement**: Block delivery of scores < 70 without approval
 
-### 2. 💾 Session Memory Agent
-**File:** `session-memory-agent.md`
-**Primary Role:** PROJECT'S PERMANENT MEMORY - Automatically documents everything and ensures perfect continuity
-**Use For:** Session documentation, handover preparation, context preservation, error tracking
-**Key Responsibilities:**
-- Auto-document every significant action
-- Maintain complete project history
-- Prepare comprehensive handover notes
-- Track decisions, errors, and solutions
-- Ensure zero context loss between sessions
-
-### 3. 🏗️ Solutions Architect
+### 2. 🏗️ Solutions Architect
 **File:** `solutions-architect.md`
 **Primary Role:** System architecture design and technology stack decisions
 **Use For:** Architecture design, technology stack decisions, scalability planning, architectural reviews
@@ -35,37 +26,40 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Scalability and integration patterns
 - Architectural reviews and optimization
 
-### 4. 🔒 Security Specialist
+### 3. 🔒 Security Specialist (QA-Guard Aligned)
 **File:** `security-specialist.md`
-**Primary Role:** Security analysis, vulnerability assessment, and security implementation
-**Use For:** Security reviews, vulnerability assessments, security implementation guidance
+**Primary Role:** Security analysis with QA-Guard security rules integration and evidence-based validation
+**Use For:** Security reviews, vulnerability assessments, security implementation guidance with quality scoring
 **Key Responsibilities:**
-- Security audits and code reviews
-- Vulnerability assessments
-- Defense-in-depth strategies
-- Security best practices implementation
+- Security audits and code reviews with QA-Guard validation
+- Vulnerability assessments with structured JSON output
+- Defense-in-depth strategies with evidence-based recommendations
+- **QA-Guard Security Rules**: Automatic detection of security anti-patterns
+- **Security Scoring**: 0-100 assessment with GO/FIX/BLOCK verdicts
 
-### 5. 💻 Senior Full-Stack Developer
+### 4. 💻 Senior Full-Stack Developer (QA-Guard Enhanced)
 **File:** `senior-fullstack-developer.md`
-**Primary Role:** Production-ready code development following CLAUDE Framework standards
-**Use For:** Code development, production readiness reviews, TDD implementation
+**Primary Role:** Production-ready code development with integrated QA-Guard quality checkpoints
+**Use For:** Code development, production readiness reviews, TDD implementation with quality validation
 **Key Responsibilities:**
-- Production-ready code development
-- TDD implementation
-- Comprehensive error handling
-- CLAUDE Framework compliance
+- Production-ready code development with QA-Guard validation
+- TDD implementation with quality scoring checkpoints
+- Comprehensive error handling and security validation
+- **QA-Guard Integration**: Pre/during/post development validation
+- **Quality Gates**: Mandatory 0-100 scoring before delivery
 
-### 6. 🧪 QA Testing Engineer
+### 5. 🧪 QA Testing Engineer (QA-Guard Core)
 **File:** `qa-testing-engineer.md`
-**Primary Role:** Comprehensive testing strategy implementation and quality assurance
-**Use For:** Test strategy creation, test coverage analysis, quality assurance validation
+**Primary Role:** Comprehensive testing strategy with integrated QA-Guard quality validation system
+**Use For:** Test strategy creation, test coverage analysis, factual accuracy validation, quality scoring
 **Key Responsibilities:**
-- Comprehensive test suite creation
-- Test coverage analysis
-- Quality assurance validation
-- Testing best practices implementation
+- Comprehensive test suite creation with QA-Guard validation
+- Test coverage analysis and quality scoring (0-100)
+- **QA-Guard Core Functions**: Factual accuracy assessment, security validation
+- **Structured JSON Output**: Evidence-based quality reports with GO/FIX/BLOCK verdicts
+- **Quality Control**: Claims verification, consistency checking, testability validation
 
-### 7. 🚀 DevOps Deployment Engineer
+### 6. 🚀 DevOps Deployment Engineer
 **File:** `devops-deployment-engineer.md`
 **Primary Role:** CI/CD pipelines, cloud infrastructure, and deployment strategies
 **Use For:** CI/CD setup, infrastructure management, deployment strategies, production troubleshooting
@@ -75,7 +69,7 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Infrastructure automation
 - Production monitoring and troubleshooting
 
-### 8. 🗄️ Database Architect
+### 7. 🗄️ Database Architect
 **File:** `database-architect.md`
 **Primary Role:** Database design, optimization, and data system architecture
 **Use For:** Database design, query optimization, data modeling, backup strategies
@@ -85,7 +79,7 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Data integrity and backup strategies
 - Database security implementation
 
-### 9. 📝 Technical Writer
+### 8. 📝 Technical Writer
 **File:** `technical-writer.md`
 **Primary Role:** Comprehensive documentation creation for all audiences
 **Use For:** Documentation creation, API references, user guides, tutorials
@@ -95,7 +89,7 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Developer guides and tutorials
 - Documentation maintenance strategies
 
-### 10. 👀 Code Reviewer
+### 9. 👀 Code Reviewer
 **File:** `code-reviewer.md`
 **Primary Role:** Code quality reviews with mentorship focus
 **Use For:** Code reviews, mentorship, best practices enforcement, knowledge transfer
@@ -105,7 +99,7 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Knowledge transfer and mentorship
 - Code quality assurance
 
-### 11. 🎨 UX/UI Designer
+### 10. 🎨 UX/UI Designer
 **File:** `ux-ui-designer.md`
 **Primary Role:** User-centered design with accessibility and modern patterns
 **Use For:** UI/UX design, accessibility compliance, responsive design, user experience optimization
@@ -115,7 +109,7 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - User experience optimization
 - Design system implementation
 
-### 12. ⚡ Performance Engineer
+### 11. ⚡ Performance Engineer
 **File:** `performance-engineer.md`
 **Primary Role:** Application performance optimization and monitoring
 **Use For:** Performance optimization, load testing, monitoring, resource optimization
@@ -125,253 +119,74 @@ This directory contains 29 specialized sub-agents designed to work with the CLAU
 - Load testing and monitoring
 - Memory management and leak detection
 
-### 13. 🎭 Playwright Test Agent
-**File:** `playwright-test-agent.md`
-**Primary Role:** Comprehensive browser automation testing with accessibility, performance, and visual regression testing
-**Use For:** E2E testing, browser automation, accessibility compliance, performance testing, visual regression testing
-**Key Responsibilities:**
-- Cross-browser automation testing using Microsoft Playwright
-- WCAG 2.1 AA accessibility compliance testing
-- Performance monitoring and Core Web Vitals validation
-- Visual regression testing with pixel-perfect comparisons
-- CI/CD integration with comprehensive reporting
-
-### 14. 🎨 Frontend Specialist
-**File:** `frontend-specialist.md`
-**Primary Role:** Expert frontend development with modern frameworks and UI/UX implementation
-**Use For:** React/Vue/Next.js development, Tailwind/CSS styling, Figma-to-code, responsive design, animations
-**Key Responsibilities:**
-- Component architecture and state management
-- Performance optimization and Core Web Vitals
-- Accessibility (WCAG 2.1 AA) compliance
-- Responsive design and mobile-first development
-- CSS architecture and design systems
-
-### 15. 🔧 Backend Specialist
-**File:** `backend-specialist.md`
-**Primary Role:** Server-side development, API design, and distributed architectures
-**Use For:** RESTful/GraphQL APIs, Node.js/Python backends, authentication, database integration
-**Key Responsibilities:**
-- API design and microservices architecture
-- Authentication and authorization systems
-- Database optimization and caching strategies
-- Message queues and event-driven architectures
-- Performance optimization and monitoring
-
-### 16. 📊 Data Engineer
-**File:** `data-engineer.md`
-**Primary Role:** ETL pipelines, data warehouse architecture, and stream processing
-**Use For:** Data pipelines, Supabase/Postgres, ETL/ELT processes, big data processing
-**Key Responsibilities:**
-- ETL/ELT pipeline design with Airflow/dbt
-- Stream processing with Kafka/Flink
-- Data warehouse optimization (Snowflake, BigQuery)
-- Data quality and governance frameworks
-- Big data processing with Spark
-
-### 17. 🤖 ML/AI Integration
-**File:** `ml-ai-integration.md`
-**Primary Role:** AI/ML system integration and deployment
-**Use For:** OpenAI/Anthropic APIs, RAG systems, vector databases, model serving
-**Key Responsibilities:**
-- LLM API integration and optimization
-- RAG pipeline implementation
-- Vector database management (Pinecone, Weaviate)
-- Model fine-tuning and deployment
-- AI safety and responsible AI practices
-
-### 18. 🚀 Load/Stress Test
-**File:** `load-stress-test.md`
-**Primary Role:** Performance testing and load analysis
-**Use For:** k6/JMeter/Locust testing, performance benchmarking, stress testing
-**Key Responsibilities:**
-- Load test scenario design and execution
-- Performance benchmarking and analysis
-- Stress test automation
-- CI/CD performance gates
-- Results analysis and reporting
-
-### 19. ♿ Accessibility Specialist
-**File:** `accessibility-specialist.md`
-**Primary Role:** WCAG compliance and accessibility implementation
-**Use For:** WCAG 2.1 compliance, ARIA implementation, screen reader optimization
-**Key Responsibilities:**
-- WCAG 2.1 AA/AAA compliance auditing
-- ARIA implementation and semantic HTML
-- Keyboard navigation and focus management
-- Screen reader optimization
-- Automated and manual accessibility testing
-
-### 20. ✅ Lint/Code Quality
-**File:** `lint-code-quality.md`
-**Primary Role:** Code quality enforcement and standards
-**Use For:** ESLint/Prettier setup, code style enforcement, complexity analysis
-**Key Responsibilities:**
-- Linting configuration for multiple languages
-- Code complexity and maintainability metrics
-- Pre-commit hooks and quality gates
-- Security linting and dead code detection
-- CI/CD quality enforcement
-
-### 21. 📈 Monitoring & Observability
-**File:** `monitoring-observability.md`
-**Primary Role:** Production monitoring and observability solutions
-**Use For:** Prometheus/Grafana, distributed tracing, log aggregation, alerting
-**Key Responsibilities:**
-- Metrics and monitoring setup (Prometheus, DataDog)
-- Distributed tracing implementation (OpenTelemetry)
-- Log aggregation and analysis (ELK Stack)
-- SLO/SLI management and error budgets
-- Alert configuration and incident response
-
-### 22. ⚙️ CI/CD Pipeline
-**File:** `ci-cd-pipeline.md`
-**Primary Role:** Automated deployment pipelines and release management
-**Use For:** GitHub Actions, GitLab CI, deployment strategies, rollback procedures
-**Key Responsibilities:**
-- Multi-stage pipeline design
-- Deployment strategies (blue-green, canary)
-- Secret management and security scanning
-- Automated testing integration
-- Rollback and recovery procedures
-
-### 23. 🏗️ Infrastructure as Code
-**File:** `infra-as-code.md`
-**Primary Role:** Infrastructure automation and cloud architecture
-**Use For:** Terraform, Pulumi, Kubernetes, cloud infrastructure, cost optimization
-**Key Responsibilities:**
-- IaC implementation (Terraform, Pulumi)
-- Kubernetes manifests and Helm charts
-- Multi-cloud architecture design
-- Infrastructure testing and validation
-- Cost optimization and resource management
-
-### 24. 📋 Product Manager
-**File:** `product-manager.md`
-**Primary Role:** Product strategy and requirement management
-**Use For:** User stories, roadmap planning, feature prioritization, sprint planning
-**Key Responsibilities:**
-- Product roadmap and strategy development
-- User research and persona development
-- Feature prioritization (RICE, Value vs Effort)
-- Sprint planning and backlog management
-- Success metrics and KPI tracking
-
-### 25. 📊 Business Analyst
-**File:** `business-analyst.md`
-**Primary Role:** Business process analysis and solution design
-**Use For:** Requirements analysis, process mapping, gap analysis, ROI analysis
-**Key Responsibilities:**
-- Business process mapping and optimization
-- Requirements gathering and documentation
-- Gap analysis and solution design
-- Data analysis and business intelligence
-- Stakeholder management and communication
-
-### 26. ✍️ Content Strategist
-**File:** `content-strategist.md`
-**Primary Role:** Content architecture and technical documentation
-**Use For:** Technical documentation, API docs, user guides, marketing content, SEO
-**Key Responsibilities:**
-- Content strategy and governance
-- Technical documentation writing
-- API documentation and tutorials
-- SEO optimization and content marketing
-- UX writing and microcopy
-
-### 27. 🔐 Privacy/GDPR
-**File:** `privacy-gdpr.md`
-**Primary Role:** Privacy compliance and data protection
-**Use For:** GDPR/AVG compliance, privacy policies, consent management, data protection
-**Key Responsibilities:**
-- GDPR compliance implementation
-- Privacy by design principles
-- Data protection impact assessments
-- Consent management systems
-- Cross-border data transfer compliance
-
-### 28. 🛡️ Threat Modeling
-**File:** `threat-modeling.md`
-**Primary Role:** Security architecture and vulnerability assessment
-**Use For:** STRIDE modeling, OWASP Top 10, security reviews, incident response
-**Key Responsibilities:**
-- Threat modeling and risk assessment
-- OWASP security standards implementation
-- Security architecture reviews
-- Vulnerability management
-- Zero trust architecture design
-
-### 29. 🔄 n8n Workflow Creator
-**File:** `n8n-workflow-creator.md`
-**Primary Role:** Create and validate n8n workflow JSON files following n8n-mcp guidelines
-**Use For:** Workflow creation from descriptions, template-based workflows, validation, optimization
-**Key Responsibilities:**
-- Create n8n workflow JSON files from natural language
-- Validate workflows using n8n-mcp standards
-- Optimize workflow structure and performance
-- Template management and pattern recognition
-- Repository update checking and compliance
-
 ## Usage Guidelines
 
 ### When to Use Which Agent
-
-#### 🔹 Development & Architecture
-- **Frontend Development:** Frontend Specialist
-- **Backend Development:** Backend Specialist  
-- **Full-Stack Development:** Senior Full-Stack Developer
-- **Data Pipelines:** Data Engineer
-- **AI/ML Integration:** ML/AI Integration
-- **System Architecture:** Solutions Architect
+- **Complex Projects:** Start with Master Orchestrator
+- **New Architecture:** Solutions Architect
+- **Security Concerns:** Security Specialist
+- **Code Development:** Senior Full-Stack Developer
+- **Testing Needs:** QA Testing Engineer
+- **Deployment/Infrastructure:** DevOps Deployment Engineer
 - **Database Design:** Database Architect
-- **n8n Workflows:** n8n Workflow Creator
-
-#### 🔹 Quality & Testing
-- **Comprehensive Testing:** QA Testing Engineer
-- **Browser/E2E Testing:** Playwright Test Agent
-- **Performance Testing:** Load/Stress Test
-- **Accessibility Testing:** Accessibility Specialist
-- **Code Quality:** Code Reviewer or Lint/Code Quality
-
-#### 🔹 Operations & Infrastructure
-- **Monitoring Setup:** Monitoring & Observability
-- **CI/CD Pipelines:** CI/CD Pipeline
-- **Infrastructure:** Infrastructure as Code
-- **Deployment:** DevOps Deployment Engineer
-- **Performance Issues:** Performance Engineer
-
-#### 🔹 Product & Design
-- **Product Strategy:** Product Manager
-- **Business Analysis:** Business Analyst
-- **Content/Documentation:** Content Strategist or Technical Writer
+- **Documentation:** Technical Writer
+- **Code Quality:** Code Reviewer
 - **UI/UX Design:** UX/UI Designer
-
-#### 🔹 Security & Compliance
-- **Security Reviews:** Security Specialist
-- **Privacy/GDPR:** Privacy/GDPR
-- **Threat Analysis:** Threat Modeling
-
-#### 🔹 Orchestration
-- **Complex Projects:** Master Orchestrator (coordinates all agents)
+- **Performance Issues:** Performance Engineer
 
 ### Agent Collaboration
 Agents are designed to work together:
 - Master Orchestrator coordinates multiple agents
-- **Session Memory Agent auto-activates after EVERY agent action**
 - Solutions Architect provides foundation for other agents
 - Security Specialist reviews all agent outputs
 - All agents follow CLAUDE Framework standards
 
-### CLAUDE Framework Compliance
+### CLAUDE Framework + QA-Guard Compliance
 All agents enforce:
-- **Planning & Communication** (P-1 to P-8)
-- **Code Quality** (C-1 to C-5, N-1 to N-6, S-1 to S-3)
-- **Error Handling** (E-1 to E-5, L-1 to L-4)
-- **Testing** (T-1 to T-3, TQ-1 to TQ-5)
-- **Security & Privacy** (SEC-1 to SEC-8)
-- **And all other CLAUDE Framework rules**
+- **Planning & Communication** (P-1 to P-8) with factual accuracy validation
+- **Code Quality** (C-1 to C-5, N-1 to N-6, S-1 to S-3) with quality scoring
+- **Error Handling** (E-1 to E-5, L-1 to L-4) with comprehensive validation
+- **Testing** (T-1 to T-3, TQ-1 to TQ-5) with evidence-based testing
+- **Security & Privacy** (SEC-1 to SEC-8) with QA-Guard security rules
+- **QA-Guard Integration**: 0-100 scoring, structured JSON output, GO/FIX/BLOCK verdicts
+- **Quality Thresholds**: Delivery blocking for scores < 70
+- **Evidence-Based Validation**: All claims must be verifiable or marked as "UNSURE"
+
+## QA-Guard Quality Control Features
+
+### Integrated Across All Agents
+- **Factual Accuracy Validation**: All claims verified against authoritative sources
+- **Consistency Checking**: Outputs validated against project context and previous decisions
+- **Security Rule Enforcement**: Automatic detection of security vulnerabilities and anti-patterns
+- **Quality Scoring**: Mandatory 0-100 assessment with clear thresholds
+- **Structured Output**: JSON format for critical validations with evidence and actions
+- **Evidence-Based Recommendations**: All advice backed by verifiable sources
+
+### Quality Gate Thresholds
+- **90-100**: Production-ready, minimal risk → **GO**
+- **70-89**: Minor issues, acceptable with fixes → **FIX**
+- **40-69**: Multiple problems, requires significant work → **FIX/BLOCK**
+- **0-39**: Unsafe, broken, or contradictory → **BLOCK**
+
+### QA-Guard JSON Output Format
+```json
+{
+  "type": "claim|architecture|code",
+  "verdict": "GO|FIX|BLOCK|UNSURE",
+  "score": 0-100,
+  "evidence": ["verification points"],
+  "issues": ["specific problems"],
+  "tests": {
+    "commands": ["executable tests"],
+    "unit_tests": ["test examples"],
+    "acceptance": ["criteria"],
+    "expected_results": ["outcomes"]
+  },
+  "actions": ["actionable fixes"],
+  "recommendation": "clear verdict with rationale"
+}
+```
 
 ---
-*Updated: 2025-09-08*
-*Framework Version: CLAUDE Enhanced v2.0*
-*Total Agents: 29*
+*Generated: 2025-09-13*
+*Framework Version: CLAUDE Enhanced v2.0 + QA-Guard Integration*
