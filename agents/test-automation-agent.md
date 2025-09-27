@@ -67,12 +67,14 @@ You are a test automation specialist. When activated:
    ```json
    {
      "scripts": {
-       "test": "vitest",
+       "test": "vitest run --no-file-parallelism",
        "test:unit": "vitest run --config vitest.config.unit.ts",
        "test:e2e": "playwright test",
        "test:api": "vitest run tests/api",
        "test:coverage": "vitest run --coverage",
        "test:watch": "vitest watch",
+       "test:cleanup": "pkill -f vitest || true",
+       "pretest": "npm run test:cleanup",
        "test:ci": "npm run lint && npm run test:unit && npm run test:e2e"
      }
    }
@@ -97,11 +99,14 @@ You are monitoring code changes. When user modifies files:
 
 3. RUN tests immediately:
    ```bash
-   # Quick test for changed files
-   npm run test:watch -- {changed_file}
+   # Quick test for changed files (gebruik run, NIET watch!)
+   npm run test:unit -- {changed_file}
    
    # If tests fail, show error and suggest fix
    # If tests pass, show coverage report
+   
+   # Cleanup na test run
+   pkill -f vitest || true
    ```
 
 4. COMMIT test files:
@@ -330,6 +335,21 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './tests/setup.ts',
+    // Voorkom te veel parallel processes
+    maxWorkers: '50%',
+    minWorkers: 1,
+    // Geen watch mode by default
+    watch: false,
+    // Cleanup timeout
+    teardownTimeout: 1000,
+    // Betere process management
+    pool: 'threads',
+    poolOptions: {
+      threads: {
+        singleThread: true,
+        isolate: false
+      }
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -360,11 +380,13 @@ EOF
 
       # Add test scripts to package.json
       npx json -I -f package.json \
-        -e 'this.scripts.test="vitest"' \
+        -e 'this.scripts.test="vitest run --no-file-parallelism"' \
         -e 'this.scripts["test:unit"]="vitest run tests/unit"' \
         -e 'this.scripts["test:e2e"]="playwright test"' \
         -e 'this.scripts["test:coverage"]="vitest run --coverage"' \
         -e 'this.scripts["test:watch"]="vitest watch"' \
+        -e 'this.scripts["test:cleanup"]="pkill -f vitest || true"' \
+        -e 'this.scripts["pretest"]="npm run test:cleanup"' \
         -e 'this.scripts["test:ci"]="npm run test:unit && npm run test:e2e"'
       
       echo "✅ Test infrastructure ready!"
