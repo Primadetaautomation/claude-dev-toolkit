@@ -1,0 +1,193 @@
+{
+  "version": "2.0",
+  "updated": "2025-01-27",
+  "agents": {
+    "master-orchestrator": {
+      "description": "Project coordination and quality control",
+      "triggers": ["complex project", "multiple agents", "orchestrate", "coordinate"],
+      "category": "orchestration",
+      "priority": 100,
+      "dependencies": []
+    },
+    "solutions-architect": {
+      "description": "System architecture and technology decisions",
+      "triggers": ["architecture", "design", "system", "scalability", "technology stack"],
+      "category": "planning",
+      "priority": 90,
+      "dependencies": []
+    },
+    "security-compliance-agent": {
+      "description": "Security audits and compliance (GDPR, SOC2)",
+      "triggers": ["security", "vulnerability", "compliance", "GDPR", "authentication", "encryption", "privacy"],
+      "category": "security",
+      "priority": 95,
+      "replaces": ["security-specialist", "privacy-gdpr"]
+    },
+    "senior-fullstack-developer": {
+      "description": "Production-ready code development with TDD",
+      "triggers": ["implement", "develop", "code", "fullstack", "feature"],
+      "category": "development",
+      "priority": 80,
+      "dependencies": ["qa-testing-engineer"]
+    },
+    "backend-specialist": {
+      "description": "API development, Node.js/Python, databases",
+      "triggers": ["api", "backend", "REST", "GraphQL", "database", "server"],
+      "category": "development",
+      "priority": 85,
+      "dependencies": []
+    },
+    "frontend-specialist": {
+      "description": "React/Vue/Next.js, UI implementation",
+      "triggers": ["frontend", "React", "Vue", "UI", "component", "styling"],
+      "category": "development",
+      "priority": 85,
+      "dependencies": []
+    },
+    "qa-testing-engineer": {
+      "description": "Comprehensive testing and quality validation",
+      "triggers": ["test", "QA", "quality", "coverage", "validation"],
+      "category": "testing",
+      "priority": 75,
+      "dependencies": []
+    },
+    "devops-automation-agent": {
+      "description": "CI/CD, cloud infrastructure, deployments",
+      "triggers": ["deploy", "pipeline", "CI/CD", "Docker", "Kubernetes", "infrastructure"],
+      "category": "operations",
+      "priority": 85,
+      "replaces": ["devops-deployment-engineer", "ci-cd-pipeline", "infra-as-code"]
+    },
+    "performance-testing-agent": {
+      "description": "Load testing, performance optimization",
+      "triggers": ["performance", "load test", "stress test", "optimization", "slow", "memory leak"],
+      "category": "testing",
+      "priority": 70,
+      "replaces": ["performance-engineer", "load-stress-test"]
+    },
+    "documentation-agent": {
+      "description": "Technical documentation and content strategy",
+      "triggers": ["documentation", "readme", "guide", "tutorial", "API docs"],
+      "category": "documentation",
+      "priority": 60,
+      "replaces": ["technical-writer", "content-strategist"]
+    },
+    "database-architect": {
+      "description": "Database design and optimization",
+      "triggers": ["database", "SQL", "schema", "migration", "query optimization"],
+      "category": "data",
+      "priority": 75,
+      "dependencies": []
+    },
+    "ml-ai-integration": {
+      "description": "ML/AI integration, LLMs, vector databases",
+      "triggers": ["AI", "ML", "machine learning", "LLM", "OpenAI", "vector", "embedding"],
+      "category": "ai",
+      "priority": 80,
+      "dependencies": []
+    },
+    "data-engineer": {
+      "description": "ETL pipelines, data warehousing, streaming",
+      "triggers": ["ETL", "data pipeline", "warehouse", "streaming", "Apache", "Spark"],
+      "category": "data",
+      "priority": 75,
+      "dependencies": []
+    },
+    "playwright-test-agent": {
+      "description": "Browser automation and E2E testing",
+      "triggers": ["E2E", "browser test", "Playwright", "automation", "UI test"],
+      "category": "testing",
+      "priority": 70,
+      "dependencies": []
+    },
+    "accessibility-specialist": {
+      "description": "WCAG compliance and accessibility",
+      "triggers": ["accessibility", "WCAG", "a11y", "screen reader", "ARIA"],
+      "category": "ux",
+      "priority": 65,
+      "dependencies": []
+    },
+    "monitoring-observability": {
+      "description": "Monitoring, logging, and observability",
+      "triggers": ["monitoring", "logging", "metrics", "observability", "alerts"],
+      "category": "operations",
+      "priority": 70,
+      "dependencies": []
+    },
+    "session-memory-agent": {
+      "description": "Project memory and continuity",
+      "triggers": ["memory", "session", "handover", "context"],
+      "category": "meta",
+      "priority": 100,
+      "auto_trigger": "always"
+    },
+    "context-manager": {
+      "description": "Dynamic context window management",
+      "triggers": ["context", "token", "escalation"],
+      "category": "meta",
+      "priority": 100,
+      "auto_trigger": "on_threshold"
+    }
+  },
+  "categories": {
+    "orchestration": {
+      "description": "Project coordination and management",
+      "color": "#FF6B6B"
+    },
+    "planning": {
+      "description": "Architecture and design",
+      "color": "#4ECDC4"
+    },
+    "development": {
+      "description": "Code implementation",
+      "color": "#45B7D1"
+    },
+    "testing": {
+      "description": "Quality assurance and testing",
+      "color": "#96CEB4"
+    },
+    "security": {
+      "description": "Security and compliance",
+      "color": "#FF5252"
+    },
+    "operations": {
+      "description": "DevOps and infrastructure",
+      "color": "#7E57C2"
+    },
+    "documentation": {
+      "description": "Documentation and guides",
+      "color": "#66BB6A"
+    },
+    "data": {
+      "description": "Data and databases",
+      "color": "#FF9800"
+    },
+    "ai": {
+      "description": "AI and machine learning",
+      "color": "#AB47BC"
+    },
+    "ux": {
+      "description": "User experience and design",
+      "color": "#EC407A"
+    },
+    "meta": {
+      "description": "System and memory management",
+      "color": "#78909C"
+    }
+  },
+  "deprecated_agents": [
+    "performance-engineer",
+    "load-stress-test",
+    "security-specialist",
+    "privacy-gdpr",
+    "devops-deployment-engineer",
+    "ci-cd-pipeline",
+    "infra-as-code",
+    "technical-writer",
+    "content-strategist",
+    "code-reviewer",
+    "business-analyst",
+    "product-manager",
+    "impact-analyzer"
+  ]
+}

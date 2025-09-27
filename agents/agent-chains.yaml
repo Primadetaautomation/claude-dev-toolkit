@@ -1,0 +1,259 @@
+# Agent Chain Configuration
+# Defines automated workflows for common development patterns
+
+version: "2.0"
+updated: "2025-01-27"
+
+chains:
+  # Complete feature development flow
+  full_feature_development:
+    description: "End-to-end feature implementation"
+    steps:
+      - agent: solutions-architect
+        action: "Design system architecture"
+        outputs: ["architecture.md", "tech_decisions.md"]
+        
+      - agent: backend-specialist
+        action: "Implement API endpoints"
+        inputs: ["architecture.md"]
+        outputs: ["api_code", "database_schema"]
+        
+      - agent: frontend-specialist
+        action: "Build UI components"
+        inputs: ["api_specification"]
+        outputs: ["ui_components", "styles"]
+        
+      - agent: qa-testing-engineer
+        action: "Create comprehensive tests"
+        inputs: ["api_code", "ui_components"]
+        outputs: ["test_suite", "coverage_report"]
+        
+      - agent: security-compliance-agent
+        action: "Security audit and compliance check"
+        inputs: ["all_code"]
+        outputs: ["security_report", "compliance_matrix"]
+        
+      - agent: documentation-agent
+        action: "Generate documentation"
+        inputs: ["all_code", "architecture.md"]
+        outputs: ["api_docs", "user_guide"]
+
+  # API development workflow
+  api_development:
+    description: "RESTful or GraphQL API creation"
+    steps:
+      - agent: solutions-architect
+        action: "Design API architecture"
+        outputs: ["api_design.md"]
+        
+      - agent: backend-specialist
+        action: "Implement endpoints"
+        outputs: ["api_implementation"]
+        
+      - agent: documentation-agent
+        action: "Generate OpenAPI spec"
+        outputs: ["openapi.yaml"]
+        
+      - agent: qa-testing-engineer
+        action: "API testing suite"
+        outputs: ["api_tests"]
+        
+      - agent: performance-testing-agent
+        action: "Load test endpoints"
+        outputs: ["performance_report"]
+
+  # Production deployment flow
+  production_deployment:
+    description: "Safe production deployment"
+    steps:
+      - agent: qa-testing-engineer
+        action: "Run full test suite"
+        gate: "tests_pass"
+        
+      - agent: security-compliance-agent
+        action: "Security scan"
+        gate: "no_vulnerabilities"
+        
+      - agent: performance-testing-agent
+        action: "Performance baseline"
+        outputs: ["baseline_metrics"]
+        
+      - agent: devops-automation-agent
+        action: "Deploy to staging"
+        outputs: ["staging_url"]
+        
+      - agent: playwright-test-agent
+        action: "E2E tests on staging"
+        gate: "e2e_pass"
+        
+      - agent: devops-automation-agent
+        action: "Blue-green deployment"
+        outputs: ["deployment_status"]
+        
+      - agent: monitoring-observability
+        action: "Verify metrics"
+        gate: "metrics_healthy"
+
+  # Bug fix workflow
+  bug_fix:
+    description: "Systematic bug resolution"
+    steps:
+      - agent: qa-testing-engineer
+        action: "Reproduce and isolate bug"
+        outputs: ["bug_report", "failing_test"]
+        
+      - agent: senior-fullstack-developer
+        action: "Implement fix"
+        inputs: ["bug_report"]
+        outputs: ["fix_code"]
+        
+      - agent: qa-testing-engineer
+        action: "Verify fix"
+        inputs: ["fix_code"]
+        gate: "tests_pass"
+        
+      - agent: security-compliance-agent
+        action: "Check for regressions"
+        optional: true
+
+  # Performance optimization
+  performance_optimization:
+    description: "Systematic performance improvement"
+    steps:
+      - agent: performance-testing-agent
+        action: "Baseline performance"
+        outputs: ["baseline_report", "bottlenecks"]
+        
+      - agent: database-architect
+        action: "Optimize queries"
+        condition: "database_bottleneck"
+        outputs: ["optimized_queries"]
+        
+      - agent: backend-specialist
+        action: "Optimize backend"
+        condition: "backend_bottleneck"
+        outputs: ["optimized_code"]
+        
+      - agent: frontend-specialist
+        action: "Optimize frontend"
+        condition: "frontend_bottleneck"
+        outputs: ["optimized_ui"]
+        
+      - agent: performance-testing-agent
+        action: "Verify improvements"
+        outputs: ["comparison_report"]
+
+  # Database migration
+  database_migration:
+    description: "Safe database schema changes"
+    steps:
+      - agent: database-architect
+        action: "Design migration"
+        outputs: ["migration_plan", "rollback_plan"]
+        
+      - agent: backend-specialist
+        action: "Update models"
+        outputs: ["updated_models"]
+        
+      - agent: qa-testing-engineer
+        action: "Test migration"
+        outputs: ["migration_tests"]
+        
+      - agent: devops-automation-agent
+        action: "Execute migration"
+        outputs: ["migration_status"]
+
+  # Security audit
+  security_audit:
+    description: "Comprehensive security review"
+    steps:
+      - agent: security-compliance-agent
+        action: "Code security scan"
+        outputs: ["vulnerabilities"]
+        
+      - agent: security-compliance-agent
+        action: "Dependency audit"
+        outputs: ["dependency_report"]
+        
+      - agent: security-compliance-agent
+        action: "Compliance check"
+        outputs: ["compliance_report"]
+        
+      - agent: documentation-agent
+        action: "Security documentation"
+        outputs: ["security_docs"]
+
+  # ML/AI integration
+  ml_integration:
+    description: "Machine learning feature integration"
+    steps:
+      - agent: ml-ai-integration
+        action: "Design ML pipeline"
+        outputs: ["ml_architecture"]
+        
+      - agent: data-engineer
+        action: "Prepare data pipeline"
+        outputs: ["data_pipeline"]
+        
+      - agent: ml-ai-integration
+        action: "Implement model"
+        outputs: ["model_code"]
+        
+      - agent: backend-specialist
+        action: "API integration"
+        outputs: ["ml_api"]
+        
+      - agent: qa-testing-engineer
+        action: "Model validation"
+        outputs: ["validation_report"]
+
+# Chain execution rules
+execution_rules:
+  parallel_execution:
+    enabled: true
+    max_concurrent: 3
+    
+  error_handling:
+    on_failure: "pause"  # pause, rollback, continue
+    retry_attempts: 2
+    
+  notifications:
+    on_start: true
+    on_complete: true
+    on_error: true
+    
+  gates:
+    tests_pass:
+      condition: "test_coverage > 80 && tests_passing == true"
+    no_vulnerabilities:
+      condition: "critical_vulnerabilities == 0"
+    e2e_pass:
+      condition: "e2e_success_rate > 95"
+    metrics_healthy:
+      condition: "error_rate < 1 && response_time_p95 < 1000"
+
+# Chain selection rules
+selection_rules:
+  - pattern: "implement.*feature|new feature|add.*functionality"
+    chain: full_feature_development
+    
+  - pattern: "create.*api|build.*endpoint|rest.*api|graphql"
+    chain: api_development
+    
+  - pattern: "deploy|release|production|ship"
+    chain: production_deployment
+    
+  - pattern: "fix.*bug|resolve.*issue|debug"
+    chain: bug_fix
+    
+  - pattern: "slow|performance|optimize|speed up"
+    chain: performance_optimization
+    
+  - pattern: "migrate|schema.*change|database.*update"
+    chain: database_migration
+    
+  - pattern: "security.*audit|compliance.*check|vulnerability"
+    chain: security_audit
+    
+  - pattern: "machine learning|ML|AI|model"
+    chain: ml_integration
