@@ -170,7 +170,7 @@ Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.
 - **CL-4 (MUST)** Vermeld target platform/framework versies expliciet.
 - **CL-5 (SHOULD)** Deel relevante error logs en stack traces.
 - **CL-6 (MUST)** Monitor context usage via context-manager agent.
-- **CL-7 (MUST)** Start met 32K tokens, escaleer alleen indien nodig.
+- **CL-7 (MUST)** Start met 200K tokens minimum, escaleer naar 1M indien nodig.
 
 ### **Output Format**
 - **CL-8 (MUST)** Lever complete, uitvoerbare code (geen placeholders).
@@ -298,7 +298,7 @@ Na elke code delivery:
 ## 19 — Context & Memory Management
 
 ### **Context Window Management**
-- **CTX-1 (MUST)** Start met 32K tokens tenzij pre-analyse anders aangeeft.
+- **CTX-1 (MUST)** Start met 200K tokens minimum voor betere kwaliteit en snelheid.
 - **CTX-2 (MUST)** Monitor token usage realtime via context-manager agent.
 - **CTX-3 (MUST)** Auto-escalate bij >75% usage EN incomplete task.
 - **CTX-4 (SHOULD)** Use chunking voor grote datasets.
@@ -307,9 +307,9 @@ Na elke code delivery:
 ### **Context Escalation Tiers**
 | Tier | Tokens | Use Case | Cost Factor |
 |------|--------|----------|-------------|
-| Standard | 32K | Simple CRUD, single files | 1x |
-| Extended | 200K | Multi-file projects, complex logic | 6x |
-| Maximum | 1M | Full codebase, enterprise refactoring | 31x |
+| Minimum | 200K | Standard development tasks, multi-file projects | 6x |
+| Maximum | 1M | Full codebase analysis, enterprise refactoring | 31x |
+| Legacy | 32K | Deprecated - only for simple single-file tasks | 1x |
 
 ### **Memory Management**
 - **MEM-1 (MUST)** Use session-memory agent voor ALLE significant actions.
@@ -349,16 +349,16 @@ Na elke code delivery:
 ### **Agent Selection Matrix**
 | Task Type | Primary Agent | Context Tier | Auto-Trigger | Context7 |
 |-----------|--------------|--------------|--------------|----------|
-| API Development | backend-specialist | 32K-200K | Yes | ✅ |
-| Context Management | context-manager | 32K | Always | ⚙️ |
-| Memory/Documentation | session-memory | 32K | Always | 📝 |
-| Security Review | security-specialist | 200K | On deploy | ✅ |
-| Testing | qa-testing-engineer | 200K | After code | ✅ |
-| Performance | load-stress-test | 200K | Pre-deploy | ✅ |
+| API Development | backend-specialist | 200K-1M | Yes | ✅ |
+| Context Management | context-manager | 200K | Always | ⚙️ |
+| Memory/Documentation | session-memory | 200K | Always | 📝 |
+| Security Review | security-specialist | 200K-1M | On deploy | ✅ |
+| Testing | qa-testing-engineer | 200K-1M | After code | ✅ |
+| Performance | load-stress-test | 200K-1M | Pre-deploy | ✅ |
 | Architecture | solutions-architect | 200K-1M | On design | ✅ |
-| Frontend Dev | frontend-specialist | 32K-200K | Yes | ✅ |
-| ML/AI Integration | ml-ai-integration | 32K-200K | Yes | ✅ |
-| Data Engineering | data-engineer | 32K-200K | Yes | ✅ |
+| Frontend Dev | frontend-specialist | 200K-1M | Yes | ✅ |
+| ML/AI Integration | ml-ai-integration | 200K-1M | Yes | ✅ |
+| Data Engineering | data-engineer | 200K-1M | Yes | ✅ |
 
 ### **Agent Communication**
 - **AGENT-1 (MUST)** Use structured JSON for inter-agent messages.
@@ -417,8 +417,8 @@ agent_request = {
 
 ### **Token Optimization with Context7**
 - **TOK-1 (SHOULD)** Use Context7's 5000 token default for docs.
-- **TOK-2 (MUST)** Stay within 32K tier when using Context7.
-- **TOK-3 (SHOULD)** Avoid context escalation for documentation needs.
+- **TOK-2 (MUST)** Stay within 200K tier when using Context7.
+- **TOK-3 (SHOULD)** Use 200K context for comprehensive documentation analysis.
 - **TOK-4 (MUST)** Monitor token usage via Context7 responses.
 
 ### **Agent-Specific Integration**
