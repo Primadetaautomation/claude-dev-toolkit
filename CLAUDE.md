@@ -1,6 +1,6 @@
 # 🎯 Universele Coding Principes (CLAUDE)
 
-Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.  
+Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.
 **MUST = verplicht** | **SHOULD = aanbevolen** | **COULD = optioneel**
 
 ---
@@ -64,6 +64,17 @@ Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.
 - **TQ-3 (MUST)** Realistische testdata.
 - **TQ-4 (SHOULD)** 1 assertion per test.
 - **TQ-5 (SHOULD)** Test isolation.
+
+### **Test Data Management**
+- **TD-1 (MUST)** Factories/fixtures voor test data.
+- **TD-2 (MUST NOT)** Production data in tests.
+- **TD-3 (SHOULD)** Faker/faker.js voor realistic data.
+- **TD-4 (MUST)** Seed scripts voor consistent state.
+
+### **Visual Testing**
+- **VIS-1 (SHOULD)** Screenshot tests (Percy, Chromatic).
+- **VIS-2 (SHOULD)** Cross-browser testing matrix.
+- **VIS-3 (MUST)** Mobile viewport testing.
 
 ---
 
@@ -211,6 +222,16 @@ Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.
 - **CL-33 (MUST)** Geen auto-activatie of -deactivatie van code, functies of features tenzij expliciet gevraagd.
 - **CL-34 (MUST)** Alle output moet volledig aansluiten op de vraag, zonder creatieve toevoegingen die niet gevraagd zijn.
 
+### **File Size Management**
+- **CL-35 (MUST)** Split files >500 lines voor betere context.
+- **CL-36 (SHOULD)** Use file references i.p.v. full content indien mogelijk.
+- **CL-37 (MUST)** Prioriteer relevante files in context window.
+
+### **Iterative Development**
+- **CL-38 (MUST)** Start met wireframes/pseudocode.
+- **CL-39 (MUST)** Incrementele commits per feature component.
+- **CL-40 (SHOULD)** Use feature flags voor WIP features.
+
 ---
 
 ## 16 — Continuous Improvement
@@ -221,7 +242,7 @@ Deze regels zorgen voor **hoogwaardige, veilige en maintainbare code**.
 ### **Claude Feedback Loop**
 Na elke code delivery:
 1. **Werkt het?** (Ja/Nee + error details)
-2. **Performance issues?** 
+2. **Performance issues?**
 3. **Missing functionality?**
 4. **Improvement suggestions?**
 
@@ -440,72 +461,849 @@ agent_request = {
 
 ---
 
+## 22 — Infrastructure as Code
+
+### **IaC Standards**
+- **IAC-1 (MUST)** Terraform/Pulumi voor infrastructure definitions.
+- **IAC-2 (MUST)** Version control voor alle infra configs (Git).
+- **IAC-3 (SHOULD)** Environment parity (dev ≈ staging ≈ prod).
+- **IAC-4 (MUST)** Secrets management via Vault/AWS Secrets Manager.
+- **IAC-5 (MUST)** State file backup en locking mechanism.
+- **IAC-6 (SHOULD)** Modular infrastructure (reusable modules).
+
+### **Cloud Provider Standards**
+- **CLOUD-1 (MUST)** Tagging strategy (environment, owner, cost-center).
+- **CLOUD-2 (MUST)** Cost monitoring en alerts.
+- **CLOUD-3 (SHOULD)** Multi-region setup voor HA.
+- **CLOUD-4 (MUST)** Automated backup voor critical resources.
+
+### **Configuration Management**
+- **CFG-1 (MUST)** Environment-specific configs (dev/staging/prod).
+- **CFG-2 (MUST)** Config validation pre-deployment.
+- **CFG-3 (SHOULD)** Feature flags voor gradual rollout.
+- **CFG-4 (MUST)** Rollback plan voor config changes.
+
+---
+
+## 23 — Container & Orchestration
+
+### **Docker Best Practices**
+- **CONT-1 (MUST)** Multi-stage builds voor size optimization.
+- **CONT-2 (MUST)** .dockerignore voor security (exclude .env, secrets).
+- **CONT-3 (SHOULD)** Container scanning (Trivy, Snyk, Grype).
+- **CONT-4 (MUST)** Non-root user in containers.
+- **CONT-5 (MUST)** Health checks in Dockerfile.
+- **CONT-6 (SHOULD)** Minimize layers (combine RUN commands).
+
+### **Kubernetes Standards**
+- **K8S-1 (MUST)** Resource limits & requests voor alle pods.
+- **K8S-2 (MUST)** Liveness en readiness probes.
+- **K8S-3 (MUST)** ConfigMaps/Secrets voor configuratie.
+- **K8S-4 (SHOULD)** HorizontalPodAutoscaler voor scaling.
+- **K8S-5 (MUST)** NetworkPolicies voor security.
+- **K8S-6 (SHOULD)** Pod Disruption Budgets voor HA.
+
+### **Registry Management**
+- **REG-1 (MUST)** Image tagging strategy (semantic versioning).
+- **REG-2 (MUST)** Vulnerability scanning in CI/CD.
+- **REG-3 (SHOULD)** Image retention policy (cleanup old images).
+- **REG-4 (MUST)** Private registry voor production images.
+
+---
+
+## 24 — Data Privacy & Compliance
+
+### **GDPR Compliance**
+- **GDPR-1 (MUST)** Data retention policies (max retention period).
+- **GDPR-2 (MUST)** Right to deletion implementation (data erasure).
+- **GDPR-3 (MUST)** Data export functionality (portability).
+- **GDPR-4 (MUST)** Consent management system.
+- **GDPR-5 (MUST)** PII logging prevention (mask sensitive data).
+- **GDPR-6 (SHOULD)** Data anonymization in non-prod environments.
+- **GDPR-7 (MUST)** Privacy by design (minimal data collection).
+
+### **Data Classification**
+- **CLASS-1 (MUST)** Classify data (public, internal, confidential, restricted).
+- **CLASS-2 (MUST)** Access control based on classification.
+- **CLASS-3 (MUST)** Encryption at rest voor confidential data.
+- **CLASS-4 (MUST)** Audit trail voor restricted data access.
+
+### **Compliance Documentation**
+- **COMP-1 (MUST)** Data processing registry.
+- **COMP-2 (MUST)** Privacy impact assessments (DPIA).
+- **COMP-3 (SHOULD)** Regular compliance audits.
+- **COMP-4 (MUST)** Incident response plan voor data breaches.
+
+---
+
+## 25 — Debugging & Troubleshooting
+
+### **Debugging Workflows**
+- **DEBUG-1 (MUST)** Reproducible bug reports (exact steps, environment, logs).
+- **DEBUG-2 (SHOULD)** Binary search voor regression bugs (git bisect).
+- **DEBUG-3 (MUST)** Profiling tools per language:
+  - Go: pprof
+  - Python: py-spy, cProfile
+  - Node.js: clinic.js, 0x
+  - Java: VisualVM, JProfiler
+- **DEBUG-4 (SHOULD)** Remote debugging setup documentation.
+- **DEBUG-5 (MUST)** Core dump analysis procedures voor crashes.
+
+### **Common Issues Database**
+- **ISSUE-1 (MUST)** Maintain known issues wiki/documentation.
+- **ISSUE-2 (SHOULD)** Link error codes naar solutions.
+- **ISSUE-3 (MUST)** Update database na elke incident resolution.
+- **ISSUE-4 (SHOULD)** Categorize by severity en frequency.
+
+### **Performance Debugging**
+- **PERF-DEBUG-1 (MUST)** Baseline metrics voor comparison.
+- **PERF-DEBUG-2 (SHOULD)** APM tools (New Relic, DataDog, Dynatrace).
+- **PERF-DEBUG-3 (MUST)** Query analysis tools (explain plans, slow query logs).
+- **PERF-DEBUG-4 (SHOULD)** Memory profiling voor leak detection.
+
+### **Production Debugging**
+- **PROD-DEBUG-1 (MUST)** Feature flags voor quick disable.
+- **PROD-DEBUG-2 (MUST)** Log level adjustment zonder redeploy.
+- **PROD-DEBUG-3 (SHOULD)** Request replay capability.
+- **PROD-DEBUG-4 (MUST)** Metrics export voor external analysis.
+
+---
+
+## 26 — Team Communication & Collaboration
+
+### **Communication Standards**
+- **COMM-1 (MUST)** Daily async standups (written format):
+  - Yesterday: What was accomplished
+  - Today: What's planned
+  - Blockers: Any impediments
+- **COMM-2 (SHOULD)** RFC process voor major technical changes.
+- **COMM-3 (MUST)** Incident communication templates (status updates).
+- **COMM-4 (SHOULD)** Weekly knowledge sharing sessions.
+- **COMM-5 (MUST)** Decision documentation (ADRs, meeting notes).
+
+### **Code Review Standards**
+- **CR-1 (MUST)** Review binnen 24 uur (SLA).
+- **CR-2 (MUST)** Constructive feedback format:
+  - Issue: What's wrong
+  - Impact: Why it matters
+  - Suggestion: How to fix
+- **CR-3 (SHOULD)** Pair programming voor complex features.
+- **CR-4 (MUST)** Block merge op unresolved comments.
+- **CR-5 (SHOULD)** Review checklist per PR template.
+- **CR-6 (MUST)** Separate feedback (blocking vs. suggestions).
+
+### **Meeting Efficiency**
+- **MEET-1 (SHOULD)** Agenda vóór meeting (24h notice).
+- **MEET-2 (MUST)** Meeting notes met action items.
+- **MEET-3 (SHOULD)** Default to async waar mogelijk.
+- **MEET-4 (MUST)** Time-box discussions (avoid overruns).
+
+### **Documentation Culture**
+- **DOC-CULTURE-1 (MUST)** Write-first culture (document before discussing).
+- **DOC-CULTURE-2 (SHOULD)** Wiki/Confluence voor centralized docs.
+- **DOC-CULTURE-3 (MUST)** Living documentation (update with code changes).
+- **DOC-CULTURE-4 (SHOULD)** Onboarding checklist voor new team members.
+
+---
+
+## 27 — Development Environment Setup
+
+### **Local Development**
+- **ENV-1 (MUST)** One-command setup (`make setup` / `npm run setup`).
+- **ENV-2 (MUST)** `.env.example` met alle required variables.
+- **ENV-3 (SHOULD)** Docker Compose voor local services (DB, Redis, etc.).
+- **ENV-4 (MUST)** Pre-commit hooks (Husky, pre-commit framework).
+- **ENV-5 (SHOULD)** VS Code workspace settings in repo (.vscode/).
+
+### **IDE Configuration**
+- **IDE-1 (SHOULD)** Shared IDE configs (ESLint, Prettier, editor config).
+- **IDE-2 (SHOULD)** Recommended extensions list.
+- **IDE-3 (MUST)** Debugger launch configurations.
+- **IDE-4 (SHOULD)** Code snippets voor common patterns.
+
+### **Dependency Management**
+- **DEP-1 (MUST)** Lock files committed (package-lock.json, poetry.lock).
+- **DEP-2 (MUST)** Dependency update policy (weekly/monthly).
+- **DEP-3 (SHOULD)** Renovate/Dependabot voor automated updates.
+- **DEP-4 (MUST)** Security vulnerability scanning.
+
+### **Development Tools**
+- **TOOLS-1 (SHOULD)** CLI tools documented in README.
+- **TOOLS-2 (SHOULD)** Make/Task/npm scripts voor common tasks.
+- **TOOLS-3 (MUST)** Version requirements documented (Node 20+, Python 3.11+).
+- **TOOLS-4 (SHOULD)** Troubleshooting guide voor common setup issues.
+
+---
+
+## 28 — Real-World Workflows
+
+### **Nieuwe Feature Development**
+```bash
+# 1. Clarify & Plan (5-10 min)
+- Gebruik /qcontext → gather all requirements
+- Gebruik /qplan → create detailed technical plan
+- Gebruik /qagent → select appropriate specialist (backend/frontend/etc.)
+- Review plan met stakeholder/tech lead
+
+# 2. Development (30-120 min)
+- Gebruik /qcontext7 → fetch latest library documentation
+- Gebruik /qtdd → write tests first (Red-Green-Refactor)
+- Gebruik /qcode → implement feature
+- Continuous commits (atomic, conventional commits)
+
+# 3. Quality Checks (10-20 min)
+- Gebruik /qsecurity → run security checklist
+- Gebruik /qtest → verify test coverage >80%
+- Gebruik /qrefactor → code quality review
+- Run linter & type checker
+
+# 4. Deploy (5-15 min)
+- Gebruik /qgit → create commit & PR
+- Gebruik /qagent load-stress-test → performance validation
+- CI/CD pipeline completion
+- Deploy to staging → smoke tests → production
+```
+
+### **Bug Fix Workflow**
+```bash
+# 1. Reproduce (10-20 min)
+- Get exact steps to reproduce
+- Check logs, stack traces, error messages
+- Isolate problematic code section
+- Gebruik /qdebug → debugging checklist
+
+# 2. Fix (15-45 min)
+- Write failing test first (TDD)
+- Implement minimal fix (KISS principle)
+- Verify fix works locally
+- Run full test suite
+
+# 3. Prevent (10-15 min)
+- Add regression test
+- Update error handling if needed
+- Document in known issues database
+- Post-mortem (if critical bug)
+```
+
+### **Code Review Workflow**
+```bash
+# Voor Reviewer:
+- [ ] Alle MUST regels uit CLAUDE.md gevolgd?
+- [ ] Tests aanwezig & coverage >80%?
+- [ ] Security checklist compleet (OWASP top 10)?
+- [ ] Performance impact < 100ms added latency?
+- [ ] Documentation updated (README, API docs)?
+- [ ] Breaking changes documented & communicated?
+- [ ] Database migrations tested (up & down)?
+- [ ] Error handling comprehensive?
+
+# Voor Author:
+- Self-review tegen checklist
+- Run /qcheck voor senior review simulation
+- Address all comments binnen 24h
+- Request re-review when ready
+```
+
+### **Hotfix Workflow (Production Issue)**
+```bash
+# 1. Immediate Response (0-5 min)
+- Alert team via incident channel
+- Create incident ticket (severity, impact)
+- Rollback if possible (feature flag/deployment)
+
+# 2. Investigation (5-30 min)
+- Check monitoring/logs (last 1-2 hours)
+- Identify root cause
+- Estimate fix complexity
+
+# 3. Fix & Deploy (15-60 min)
+- Create hotfix branch from main/production
+- Minimal fix + test
+- Fast-track PR review (1 reviewer minimum)
+- Deploy to production
+- Monitor for 30 minutes
+
+# 4. Post-Mortem (within 24-48h)
+- Document timeline
+- Root cause analysis (5 Whys)
+- Action items to prevent recurrence
+```
+
+### **Refactoring Workflow**
+```bash
+# 1. Preparation
+- Identify code smell (duplication, complexity, etc.)
+- Ensure test coverage >80% for target area
+- Create refactor plan (step-by-step)
+
+# 2. Execution
+- Make changes incrementally
+- Run tests after each step (Green → Green)
+- Commit frequently (atomic commits)
+- No functionality changes (behavior preserving)
+
+# 3. Validation
+- Full test suite passes
+- Performance benchmarks (no regression)
+- Code review with focus on readability
+```
+
+### **Database Migration Workflow**
+```bash
+# 1. Planning
+- Design migration (schema changes, data transformations)
+- Write both UP and DOWN migrations
+- Test on copy of production data
+
+# 2. Execution
+- Run migration in staging
+- Validate data integrity
+- Backup production database
+- Run migration in production (maintenance window if needed)
+- Verify application works
+
+# 3. Monitoring
+- Check application logs (first 30 min)
+- Monitor database performance
+- Have rollback plan ready
+```
+
+---
+
+## 29 — Priority Matrix
+
+### **🔴 CRITICAL - Always Apply**
+**Core Requirements (Breaking these = delivery rejected)**
+- **BM-1, BM-2, BM-3** → Basis missie (no assumptions, follow instructions exactly)
+- **SEC-1 to SEC-8** → Security (input validation, secrets management, TLS)
+- **E-1 to E-4** → Error handling (no silent failures)
+- **CL-31 to CL-34** → Strikte opdracht uitvoering
+- **GDPR-1 to GDPR-7** → Data privacy compliance
+
+**Security & Safety**
+- Input sanitization at all boundaries
+- Secrets via env vars (never hardcoded)
+- PII/sensitive data never in logs
+- Dependency scanning enabled
+- TLS/HTTPS everywhere
+
+**Code Quality Fundamentals**
+- Single Responsibility Principle
+- DRY (no duplication)
+- KISS (simple > complex)
+- Error handling voor alle scenarios
+
+---
+
+### **🟠 HIGH - Most Projects**
+
+**Testing & Validation**
+- **T-1, T-2, T-3** → TDD, 80% coverage, edge cases
+- **TQ-1 to TQ-5** → Test quality standards
+- **CI-1 to CI-3** → CI/CD pipeline checks
+
+**Code Standards**
+- **C-1 to C-5** → Code quality principles
+- **API-1 to API-7** → API development standards
+- **GIT-1 to GIT-3** → Git conventions
+
+**Context & Memory**
+- **CTX-1 to CTX-5** → Context window management (start with 200K)
+- **MEM-1 to MEM-5** → Session memory & handover
+- **CL-1 to CL-21** → Claude optimization basics
+
+**Performance & Monitoring**
+- **PERF-1, PERF-3, PERF-5** → Performance budgets, monitoring, resource limits
+- **OBS-1, OBS-4** → Structured logging, runbooks
+
+---
+
+### **🟡 MEDIUM - Team/Project Dependent**
+
+**Documentation**
+- **DOC-1 to DOC-5** → README, API docs, ADRs, onboarding
+- **APIDOC-1 to APIDOC-4** → API documentation standards
+
+**Accessibility & UX**
+- **A11Y-1 to A11Y-3** → WCAG compliance, keyboard nav, screen readers
+- **UX-1, UX-2** → Loading states, responsive design
+
+**Infrastructure**
+- **IAC-1 to IAC-6** → Infrastructure as Code
+- **CLOUD-1 to CLOUD-4** → Cloud provider standards
+- **K8S-1 to K8S-6** → Kubernetes standards
+
+**Collaboration**
+- **COMM-1 to COMM-5** → Team communication
+- **CR-1 to CR-6** → Code review standards
+
+---
+
+### **🟢 NICE-TO-HAVE - When Time/Budget Permits**
+
+**Advanced Testing**
+- **VIS-1 to VIS-3** → Visual/screenshot testing
+- Cross-browser testing matrix
+- Load testing voor alle endpoints
+
+**Advanced Monitoring**
+- Distributed tracing
+- APM tools (DataDog, New Relic)
+- Custom dashboards
+
+**Developer Experience**
+- IDE configs & extensions
+- Advanced debugging setups
+- Custom CLI tools
+
+**Documentation Extras**
+- Video tutorials
+- Interactive examples
+- Comprehensive troubleshooting guides
+
+---
+
+### **Decision Tree - "Wat Nu?"**
+
+```
+START
+  ↓
+Is it a security issue?
+  YES → 🔴 CRITICAL - Fix immediately
+  NO  → Continue
+  ↓
+Does it break core functionality?
+  YES → 🔴 CRITICAL - Fix immediately
+  NO  → Continue
+  ↓
+Is it required for production?
+  YES → 🟠 HIGH - Schedule this sprint
+  NO  → Continue
+  ↓
+Does it improve user experience significantly?
+  YES → 🟡 MEDIUM - Backlog, prioritize
+  NO  → Continue
+  ↓
+Is it a "nice-to-have" optimization?
+  YES → 🟢 LOW - Future enhancement
+  NO  → Document & defer
+```
+
+---
+
+## 30 — Automation & Tooling
+
+### **Pre-commit Automation**
+```bash
+# .husky/pre-commit (Node.js projects)
+#!/bin/bash
+npm run lint
+npm run typecheck
+npm run test:changed
+python scripts/check-claude-compliance.py
+
+# .pre-commit-config.yaml (Python projects)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+
+  - repo: https://github.com/psf/black
+    hooks:
+      - id: black
+
+  - repo: https://github.com/PyCQA/flake8
+    hooks:
+      - id: flake8
+```
+
+### **CI/CD Pipeline Template**
+```yaml
+# .github/workflows/ci.yml
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type Check
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm run test:coverage
+
+      - name: Security Scan
+        run: |
+          npm audit
+          npx snyk test
+
+      - name: CLAUDE.md Compliance
+        run: python scripts/check-compliance.py
+
+      - name: Coverage Check
+        run: |
+          if [ $(coverage report | grep TOTAL | awk '{print $4}' | sed 's/%//') -lt 80 ]; then
+            echo "Coverage below 80%"
+            exit 1
+          fi
+```
+
+### **CLAUDE.md Compliance Checker**
+```python
+# scripts/check-claude-compliance.py
+import re
+import sys
+from pathlib import Path
+
+def check_compliance():
+    """Check if code follows CLAUDE.md MUST rules"""
+
+    errors = []
+
+    # Check for hardcoded secrets
+    for file in Path('.').rglob('*.py'):
+        content = file.read_text()
+        if re.search(r'password\s*=\s*["\']', content, re.IGNORECASE):
+            errors.append(f"{file}: Hardcoded password detected (SEC-3)")
+
+    # Check for missing error handling
+    for file in Path('.').rglob('*.py'):
+        content = file.read_text()
+        if 'try:' in content and 'except:' in content:
+            if 'pass' in content:
+                errors.append(f"{file}: Silent failure detected (E-4)")
+
+    # Check test coverage
+    # (integrate with coverage.py)
+
+    if errors:
+        print("❌ CLAUDE.md Compliance Issues:")
+        for error in errors:
+            print(f"  - {error}")
+        sys.exit(1)
+    else:
+        print("✅ All CLAUDE.md MUST rules passed")
+
+if __name__ == "__main__":
+    check_compliance()
+```
+
+### **Session Memory Auto-save**
+```bash
+# .claude/hooks/post-edit
+#!/bin/bash
+# Auto-save to session memory after file edits
+
+echo "$(date): File edited - $1" >> .claude-memory/session-current.md
+python scripts/update-session-memory.py "$1"
+```
+
+### **Context Manager Script**
+```python
+# scripts/context-manager.py
+import os
+import anthropic
+
+def estimate_tokens(text):
+    """Rough estimation: 1 token ≈ 4 characters"""
+    return len(text) // 4
+
+def check_context_usage(files):
+    total_tokens = 0
+
+    for file in files:
+        with open(file) as f:
+            total_tokens += estimate_tokens(f.read())
+
+    print(f"Estimated tokens: {total_tokens:,}")
+
+    if total_tokens < 150_000:
+        print("✅ Safe for 200K context")
+    elif total_tokens < 750_000:
+        print("⚠️  Consider 1M context for better performance")
+    else:
+        print("🔴 Requires 1M context - optimize file selection")
+
+    return total_tokens
+
+if __name__ == "__main__":
+    import sys
+    files = sys.argv[1:]
+    check_context_usage(files)
+```
+
+### **Agent Orchestrator Template**
+```python
+# scripts/agent-orchestrator.py
+import json
+from anthropic import Anthropic
+
+class AgentOrchestrator:
+    def __init__(self):
+        self.client = Anthropic()
+        self.agents = {
+            "backend-specialist": "You are a backend development expert...",
+            "frontend-specialist": "You are a frontend development expert...",
+            "security-specialist": "You are a security expert...",
+        }
+
+    def invoke_agent(self, agent_name, task, context_tier="200K"):
+        """Invoke specialized agent with task"""
+
+        max_tokens = 200_000 if context_tier == "200K" else 1_000_000
+
+        response = self.client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=max_tokens,
+            system=self.agents[agent_name],
+            messages=[{
+                "role": "user",
+                "content": task
+            }]
+        )
+
+        return response.content[0].text
+
+    def multi_agent_workflow(self, task):
+        """Execute multi-agent workflow"""
+
+        # 1. Planning phase
+        plan = self.invoke_agent("backend-specialist", f"Create plan for: {task}")
+
+        # 2. Security review
+        security = self.invoke_agent("security-specialist", f"Review security: {plan}")
+
+        # 3. Implementation
+        code = self.invoke_agent("backend-specialist", f"Implement: {plan}\nSecurity: {security}")
+
+        return {
+            "plan": plan,
+            "security_review": security,
+            "implementation": code
+        }
+
+# Usage
+orchestrator = AgentOrchestrator()
+result = orchestrator.multi_agent_workflow("Create user authentication API")
+print(json.dumps(result, indent=2))
+```
+
+---
+
 ## 🚀 Claude Prompting Template
 
+### **Standard Prompt Format**
 ```markdown
 CONTEXT:
 - Project: [naam en beschrijving]
-- Tech stack: [exact versions, bijv. React 18.2, Node 20.x]
+- Tech stack: [exact versions - React 18.2, Node 20.x, PostgreSQL 15]
 - Files involved: [volledige paths naar relevante files]
+  - /src/api/users.ts
+  - /src/components/UserList.tsx
 - Current state: [wat werkt wel/niet, error messages]
 - Project structure: [folder structuur indien relevant]
 
 REQUIREMENTS:
 - Functionality: [specifiek wat je wilt bereiken]
+  - User moet kunnen inloggen met email/password
+  - JWT token-based authentication
+  - Session expiry na 24 uur
 - Constraints: [beperkingen, performance eisen, compatibility]
+  - Response time < 200ms
+  - Compatible with IE11+ (legacy requirement)
 - Success criteria: [hoe test je dat het werkt]
+  - [ ] User can login successfully
+  - [ ] Invalid credentials show error
+  - [ ] Token refreshes automatically
 - Non-functional: [security, performance, accessibility eisen]
+  - OWASP top 10 compliance
+  - WCAG 2.1 AA for login form
 
 DELIVERY FORMAT:
 - Complete files (geen snippets of placeholders)
-- Installation/setup steps
-- Testing instructions  
+- Installation/setup steps met exact commands
+- Testing instructions (unit + integration)
 - Potential issues to watch
-- Implementation steps for non-developers
+- Implementation steps for non-developers:
+  1. Stop development server
+  2. Run: npm install [packages]
+  3. Copy .env.example to .env
+  4. Fill in: DATABASE_URL, JWT_SECRET
+  5. Run: npm run migrate
+  6. Start server: npm run dev
+  7. Test: open http://localhost:3000/login
 
 FOLLOW-UP:
-- Feedback verwacht na implementatie
+- Feedback verwacht na implementatie:
+  1. Werkt het? (Ja/Nee + screenshots/errors)
+  2. Performance OK? (response times)
+  3. Ontbrekende functionaliteit?
+  4. Verbetersuggesties?
 - Next iteration planning indien nodig
+```
+
+### **Voor Bug Reports**
+```markdown
+BUG REPORT:
+- Descriptie: [wat gebeurt er fout]
+- Expected behavior: [wat zou moeten gebeuren]
+- Actual behavior: [wat gebeurt er echt]
+- Steps to reproduce:
+  1. Ga naar /dashboard
+  2. Klik op "Export Data"
+  3. Selecteer date range
+  4. Error verschijnt
+- Error logs: [volledige stack trace]
+- Environment:
+  - Browser: Chrome 120
+  - OS: macOS 14.2
+  - Node: 20.10.0
+- Screenshots: [indien relevant]
 ```
 
 ---
 
-## 📋 Shortcuts Checklist
+## 📋 Quick Command Reference
 
-- **QNEW**: Start nieuwe taak, lees regels, stel vragen, maak plan.
-- **QPLAN**: Schrijf plan met patterns, security, perf, compat.
-- **QCODE**: TDD flow + lint + tests.
-- **QCHECK**: Senior review checklist.
-- **QSECURITY**: Security checklist.
-- **QTEST**: Test completeness checklist.
-- **QREFACTOR**: Code quality checklist.
-- **QGIT**: Commit & PR workflow checklist.
-- **QCLAUDE**: Claude-optimized prompt checklist.
-- **QFEEDBACK**: Post-delivery feedback template.
-- **QCONTEXT**: Context gathering checklist.
-- **QAPI**: API development standards checklist.
-- **QMEMORY**: Session memory & handover checklist.
-- **QAGENT**: Agent selection & integration checklist.
-- **QCONTEXT7**: Context7 documentation fetch checklist.
+### **Planning & Context**
+- **`/qnew`** → Start nieuwe taak: lees CLAUDE.md, stel 3+ vragen, maak plan
+- **`/qplan`** → Schrijf gedetailleerd plan met patterns, security, performance
+- **`/qcontext`** → Gather all context (files, structure, dependencies)
+- **`/qcontext7`** → Fetch library documentation via Context7
 
----
+### **Development**
+- **`/qcode`** → TDD flow: tests → implementation → verification
+- **`/qtdd`** → Test-Driven Development checklist
+- **`/qrefactor`** → Code quality & refactoring checklist
 
-## 💡 Implementation Tips
+### **Quality Assurance**
+- **`/qcheck`** → Senior review simulation (alle MUST regels)
+- **`/qsecurity`** → Security checklist (OWASP top 10)
+- **`/qtest`** → Test completeness (coverage, edge cases)
 
-### Voor Non-Developers:
-1. **Gebruik de prompting template** - kopieer en vul in
-2. **Start klein** - vraag om MVP eerst
-3. **Geef specifieke feedback** - "werkt niet" vs "krijg error X bij stap Y"
-4. **Test systematisch** - volg de test instructies exact
-5. **Documenteer problemen** - screenshots, error messages, steps to reproduce
+### **Operations**
+- **`/qgit`** → Commit & PR workflow (conventional commits)
+- **`/qdebug`** → Debugging workflow checklist
+- **`/qapi`** → API development standards checklist
 
-### Voor Developers:
-1. **Review Claude output** tegen deze checklist
-2. **Enforce in PR reviews** - link naar relevante regels
-3. **Update regelmatig** - maandelijkse retrospective
-4. **Automatiseer waar mogelijk** - linting, testing, security scans
-5. **Meet en verbeter** - track metrics en leer van fouten
+### **Memory & Context**
+- **`/qmemory`** → Session memory & handover checklist
+- **`/qagent`** → Agent selection & integration guide
+- **`/qfeedback`** → Post-delivery feedback template
 
 ---
 
-*Versie 3.1 - Enhanced with API Standards, Context Management, Agent Integration & Context7 MCP*
+## 💡 Implementation Guide for Non-Developers
+
+### **1. Setup (One-time)**
+```bash
+# A. Clone this CLAUDE.md to your project root
+cp CLAUDE.md /path/to/your/project/
+
+# B. Create memory directory
+mkdir -p .claude-memory
+
+# C. Install pre-commit hooks (if applicable)
+# Voor Node.js:
+npx husky install
+npx husky add .husky/pre-commit "npm run lint && npm run test"
+
+# Voor Python:
+pip install pre-commit
+pre-commit install
+```
+
+### **2. Working with Claude**
+
+**Voor Elke Nieuwe Taak:**
+1. Open Claude chat
+2. Type: `/qnew` (of paste prompt template)
+3. Vul context in:
+   - Wat wil je bouwen?
+   - Welke files zijn relevant?
+   - Welke tech stack gebruik je?
+4. Wacht op Claude's vragen
+5. Beantwoord vragen zo specifiek mogelijk
+6. Review het plan
+7. Geef akkoord voor implementatie
+
+**Tijdens Development:**
+1. Claude levert code → kopieer naar juiste files
+2. Run de tests: `npm test` of `pytest`
+3. Werkt niet? → kopieer error message terug naar Claude
+4. Werkt wel? → gebruik `/qgit` voor commit
+
+**Na Implementatie:**
+1. Test de feature handmatig
+2. Geef feedback via `/qfeedback` template:
+   - ✅ Werkt perfect
+   - ⚠️ Werkt maar met issues: [beschrijf]
+   - ❌ Werkt niet: [error logs]
+
+### **3. Troubleshooting Common Issues**
+
+**"Code werkt niet"**
+1. Kopieer exacte error message
+2. Check of alle dependencies geïnstalleerd zijn: `npm install` / `pip install -r requirements.txt`
+3. Check .env file (zijn alle variabelen ingevuld?)
+4. Deel error + environment info met Claude
+
+**"Te veel context / slow responses"**
+1. Type: `/qcontext` → laat Claude files selecteren
+2. Gebruik chunking: splits grote taak in kleinere stukken
+3. Clear oude context: begin nieuwe chat voor nieuwe feature
+
+**"Claude begrijpt me niet"**
+1. Gebruik het prompt template (zie boven)
+2. Wees specifieker: geen "maak een login", maar "maak login met email/password, JWT tokens, en session expiry"
+3. Voeg screenshots toe indien UI-related
+
+### **4. Cheatsheet**
+
+**Goede Prompts:**
+- ✅ "Maak een REST API voor user CRUD met PostgreSQL, include input validation en error handling volgens CLAUDE.md SEC-1 en E-1"
+- ✅ "Fix de bug in /src/auth/login.ts waar users met uppercase emails niet kunnen inloggen. Error: 'User not found'"
+- ✅ "Refactor /src/utils/validator.ts om DRY principe te volgen (C-2), er is veel duplicatie"
+
+**Slechte Prompts:**
+- ❌ "Maak een login" (te vaag)
+- ❌ "Fix de code" (geen context)
+- ❌ "Het werkt niet" (geen error info)
+
+---
+
+## 🎯 Success Metrics
+
+### **Weekly Review**
+- [ ] First-time success rate > 70% (code werkt zonder fixes)
+- [ ] Average iterations per feature < 3
+- [ ] Test coverage > 80%
+- [ ] Security issues found: 0
+- [ ] Production bugs: < 2 per week
+
+### **Monthly Review**
+- [ ] Update CLAUDE.md met lessons learned
+- [ ] Review common error patterns
+- [ ] Update tooling (dependencies, linters, etc.)
+- [ ] Team retrospective: wat werkt, wat niet?
+
+### **Continuous Improvement**
+1. Track metrics in `.claude-memory/metrics.md`
+2. Identify bottlenecks (waar gaat tijd verloren?)
+3. Update workflows & templates
+4. Share learnings met team
+
+---
+
+*Versie 4.0 - Complete Enhanced Edition*
+*Includes: Infrastructure, Privacy/GDPR, Debugging, Communication, Dev Environment, Real-World Workflows, Priority Matrix, Automation & Tooling*
