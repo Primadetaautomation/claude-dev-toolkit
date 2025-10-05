@@ -220,6 +220,22 @@ Claude analyseert automatisch:
 - **CL-6 (MUST)** Monitor context usage via context-manager agent.
 - **CL-7 (MUST)** Bepaal context size automatisch op basis van task complexity.
 
+### Agent Usage & Delegation
+- **AGENT-1 (MUST)** Analyseer elke complexe taak en bepaal of een gespecialiseerde agent nodig is.
+- **AGENT-2 (MUST)** Gebruik subagents voor multi-step taken die meerdere expertise gebieden raken.
+- **AGENT-3 (SHOULD)** Delegeer naar specifieke agents op basis van taaktype:
+  - **backend-specialist**: API's, databases, server-side logic
+  - **frontend-specialist**: UI components, styling, client-side interactie
+  - **security-specialist**: Authentication, authorization, GDPR compliance
+  - **qa-testing-engineer**: Test strategie, coverage analysis, quality assurance
+  - **accessibility-specialist**: WCAG compliance, inclusive design
+  - **data-engineer**: ETL pipelines, data warehouse, data quality
+  - **ml-ai-integration**: LLM integration, RAG systems, vector databases
+  - **playwright-test-agent**: Browser automation, E2E testing
+  - **solutions-architect**: System design, tech stack decisions, scalability
+- **AGENT-4 (MUST)** Run agents in parallel waar mogelijk voor optimale performance.
+- **AGENT-5 (SHOULD)** Gebruik general-purpose agent voor open-ended research taken.
+
 ### Output Format
 - **CL-8 (MUST)** Lever complete, uitvoerbare code (geen placeholders).
 - **CL-9 (MUST)** Toon volledige file content, niet alleen snippets.
