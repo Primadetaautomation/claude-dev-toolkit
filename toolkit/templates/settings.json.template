@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "PreCompact": ".claude/hooks/hook-precompact.py"
+  }
+}

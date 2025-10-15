@@ -25,6 +25,37 @@ Een slimme **modulaire documentatie-structuur** die Claude Code helpt om de juis
 
 ---
 
+## 🎯 Claude Toolkit - NEW!
+
+**Added:** 2025-10-15
+
+Complete development toolkit extracted from Microsoft Amplifier with 4 powerful features:
+
+1. **Defensive Utilities** (Python) - Robust LLM integration (parse messy JSON, retry with feedback)
+2. **Parallel Worktrees** - Test multiple approaches simultaneously
+3. **Conversation Transcripts** - Auto-save before compaction, never lose context
+4. **Knowledge Base** - Extract and query your documentation
+
+**Location:** `toolkit/`
+
+### Quick Toolkit Setup:
+```bash
+# Install to your system
+cp -r toolkit ~/.claude-toolkit
+
+# Integrate into any project
+cd ~/your-project
+echo 'include ~/.claude-toolkit/Makefile.include' >> Makefile
+make help-toolkit
+
+# Install defensive utilities (Python)
+pip install -e ~/.claude-toolkit/defensive
+```
+
+**Full Documentation:** See `toolkit/README.md`
+
+---
+
 ## 🆕 Chrome DevTools MCP Integration
 
 This configuration now includes Chrome DevTools MCP for real-time browser control, debugging, and performance analysis.
@@ -42,13 +73,21 @@ claude mcp add chrome-devtools npx chrome-devtools-mcp@latest
 
 ```
 .
-├── CLAUDE.md                        # Core regels (~8.5K chars) ⭐ NIEUW v5.0
-├── docs/                            # Gespecialiseerde modules ⭐ NIEUW v5.0
+├── CLAUDE.md                        # Core regels (~8.5K chars) ⭐ v5.0
+├── docs/                            # Gespecialiseerde modules ⭐ v5.0
 │   ├── backend.md                   # API, database, server
 │   ├── frontend.md                  # UI, formulieren, pagina's
 │   ├── security.md                  # Inloggen, privacy, GDPR
 │   ├── infrastructure.md            # Deployment, hosting, Docker
 │   └── testing.md                   # Testen, debuggen, kwaliteit
+├── toolkit/                         # Development Toolkit ⭐ NIEUW 2025-10-15
+│   ├── defensive/                   # Python LLM utilities
+│   ├── worktrees/                   # Parallel development
+│   ├── transcripts/                 # Auto-save conversations
+│   ├── knowledge/                   # Doc extraction & query
+│   ├── templates/                   # Integration templates
+│   ├── Makefile.include             # Easy integration
+│   └── README.md                    # Complete documentation
 ├── agents/                          # Custom AI agents
 │   ├── senior-fullstack-developer.md
 │   ├── qa-testing-engineer.md

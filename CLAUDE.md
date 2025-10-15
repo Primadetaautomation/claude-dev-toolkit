@@ -110,6 +110,15 @@ Herkenbare zinnen:
 - **P-7 (MUST)** Documenteer impact op bestaande code.
 - **P-8 (SHOULD)** Noem welke files je gaat aanpassen.
 
+### 🔍 Impact Analysis (CRITICAL)
+- **IA-1 (MUST)** Vóór ELKE code wijziging: analyseer impact op bestaande functionaliteit.
+- **IA-2 (MUST)** Check alle afhankelijkheden die geraakt kunnen worden.
+- **IA-3 (MUST)** Zoek naar alle files die de te wijzigen code importeren/gebruiken.
+- **IA-4 (MUST)** Run bestaande tests VOOR wijzigingen om baseline te bepalen.
+- **IA-5 (MUST)** Bij overwriting: backup/documenteer originele implementatie.
+- **IA-6 (MUST NOT)** Nooit code overschrijven zonder impact check.
+- **IA-7 (MUST)** Bij twijfel: vraag expliciet "Mag ik X overschrijven? Dit heeft impact op Y"
+
 ---
 
 ## 2 — Code Kwaliteit
@@ -254,6 +263,7 @@ Claude analyseert automatisch:
 ### 🔴 CRITICAL - Always Apply
 **Core Requirements (Breaking these = delivery rejected)**
 - **BM-1, BM-2, BM-3** - Basis missie
+- **IA-1 to IA-7** - Impact Analysis (NIEUW!)
 - **SEC-1 to SEC-8** - Security
 - **E-1 to E-4** - Error handling
 - **CL-12 to CL-14** - Strikte opdracht uitvoering

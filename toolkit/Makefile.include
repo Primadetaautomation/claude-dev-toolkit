@@ -1,0 +1,99 @@
+# Claude Toolkit - Makefile Integration
+# Include this in your project's Makefile to get all toolkit commands
+# Usage: Add to your Makefile: include ~/.claude-toolkit/Makefile.include
+
+.PHONY: help-toolkit
+
+# Toolkit help (shows all available commands)
+help-toolkit: ## Show Claude Toolkit commands
+	@echo ""
+	@echo "═══════════════════════════════════════════════════════════════"
+	@echo "  CLAUDE TOOLKIT COMMANDS"
+	@echo "═══════════════════════════════════════════════════════════════"
+	@echo ""
+	@echo "PARALLEL WORKTREES (test multiple approaches simultaneously):"
+	@echo "  make worktree NAME=feature-name  Create new worktree"
+	@echo "  make worktree-list                List all worktrees"
+	@echo "  make worktree-rm NAME=feature-name  Remove worktree"
+	@echo ""
+	@echo "CONVERSATION TRANSCRIPTS (never lose context):"
+	@echo "  make transcript-list              List saved transcripts"
+	@echo "  make transcript-restore [FILE=]   Restore conversation"
+	@echo "  make transcript-search TERM='...' Search transcripts"
+	@echo ""
+	@echo "KNOWLEDGE BASE (query your docs):"
+	@echo "  make knowledge-update             Extract from docs/"
+	@echo "  make knowledge-query Q='...'      Query knowledge"
+	@echo "  make knowledge-stats              Show statistics"
+	@echo ""
+	@echo "DEFENSIVE UTILITIES (Python - no make commands):"
+	@echo "  Install: pip install -e ~/.claude-toolkit/defensive"
+	@echo "  Import:  from claude_toolkit_defensive import parse_llm_json"
+	@echo ""
+	@echo "═══════════════════════════════════════════════════════════════"
+	@echo ""
+
+#
+# PARALLEL WORKTREES
+#
+
+.PHONY: worktree worktree-list worktree-rm
+
+worktree: ## Create git worktree. Usage: make worktree NAME=feature-name
+ifndef NAME
+	@echo "Error: NAME required. Usage: make worktree NAME=feature-name"
+	@exit 1
+endif
+	@$(HOME)/.claude-toolkit/worktrees/create.sh $(NAME)
+
+worktree-list: ## List all git worktrees
+	@$(HOME)/.claude-toolkit/worktrees/list.sh
+
+worktree-rm: ## Remove git worktree. Usage: make worktree-rm NAME=feature-name
+ifndef NAME
+	@echo "Error: NAME required. Usage: make worktree-rm NAME=feature-name"
+	@exit 1
+endif
+	@$(HOME)/.claude-toolkit/worktrees/remove.sh $(NAME)
+
+#
+# CONVERSATION TRANSCRIPTS
+#
+
+.PHONY: transcript-list transcript-restore transcript-search
+
+transcript-list: ## List all saved transcripts
+	@$(HOME)/.claude-toolkit/transcripts/list.sh
+
+transcript-restore: ## Restore conversation. Usage: make transcript-restore [FILE=filename]
+ifdef FILE
+	@$(HOME)/.claude-toolkit/transcripts/restore.sh $(FILE)
+else
+	@$(HOME)/.claude-toolkit/transcripts/restore.sh
+endif
+
+transcript-search: ## Search transcripts. Usage: make transcript-search TERM='search term'
+ifndef TERM
+	@echo "Error: TERM required. Usage: make transcript-search TERM='search term'"
+	@exit 1
+endif
+	@$(HOME)/.claude-toolkit/transcripts/search.sh "$(TERM)"
+
+#
+# KNOWLEDGE BASE
+#
+
+.PHONY: knowledge-update knowledge-query knowledge-stats
+
+knowledge-update: ## Extract knowledge from docs/
+	@$(HOME)/.claude-toolkit/knowledge/extract.sh
+
+knowledge-query: ## Query knowledge base. Usage: make knowledge-query Q='question'
+ifndef Q
+	@echo "Error: Q required. Usage: make knowledge-query Q='your question'"
+	@exit 1
+endif
+	@$(HOME)/.claude-toolkit/knowledge/query.sh "$(Q)"
+
+knowledge-stats: ## Show knowledge base statistics
+	@$(HOME)/.claude-toolkit/knowledge/stats.sh

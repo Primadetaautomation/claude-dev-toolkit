@@ -1,0 +1,42 @@
+# Project Makefile with Claude Toolkit Integration
+
+# Include Claude Toolkit commands
+include ~/.claude-toolkit/Makefile.include
+
+# Default target
+.PHONY: default
+default: help
+
+# Project-specific commands
+.PHONY: help install dev test clean
+
+help: ## Show this help message
+	@echo ""
+	@echo "PROJECT COMMANDS:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+		grep -v "^help-toolkit" | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "  %-20s %s\n", $$1, $$2}'
+	@echo ""
+	@make help-toolkit
+
+install: ## Install dependencies
+	@echo "Installing dependencies..."
+	# Add your install commands here
+	# Example: npm install, pip install -r requirements.txt, etc.
+
+dev: ## Start development server
+	@echo "Starting development server..."
+	# Add your dev server command here
+	# Example: npm run dev, python manage.py runserver, etc.
+
+test: ## Run tests
+	@echo "Running tests..."
+	# Add your test command here
+	# Example: npm test, pytest, etc.
+
+clean: ## Clean build artifacts
+	@echo "Cleaning..."
+	# Add your clean commands here
+	# Example: rm -rf dist/ build/ *.pyc
+
+# Add your project-specific targets below
