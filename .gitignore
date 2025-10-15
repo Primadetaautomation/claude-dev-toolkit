@@ -36,3 +36,6 @@ yarn.lock
 # IDE files
 .vscode/
 .idea/
+# Personal marketing materials
+ANNOUNCEMENT.md
+SOCIAL_MEDIA_POSTS.md
