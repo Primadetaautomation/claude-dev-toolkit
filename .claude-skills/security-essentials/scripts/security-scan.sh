@@ -53,7 +53,7 @@ else
             --exclude-dir=node_modules \
             --exclude-dir=.git \
             --exclude-dir=dist \
-            --exclude="*.md" 2>/dev/null | grep -v "EXAMPLE\|PLACEHOLDER\|YOUR_.*_HERE"; then
+            --exclude="*.md" 2>/dev/null | grep -v -E "EXAMPLE|PLACEHOLDER|YOUR_.*_HERE"; then
             echo -e "${RED}✗ Potential secret found: $pattern${NC}"
             ISSUES_FOUND=1
         fi
