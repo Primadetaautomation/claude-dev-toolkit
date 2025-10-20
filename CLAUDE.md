@@ -331,7 +331,7 @@ Claude detecteert automatisch welke skills nodig zijn:
 
 ### 📦 Skills Locatie
 
-Alle skills zijn beschikbaar in: `.claude/skills/`
+Alle skills zijn beschikbaar in: `.claude-skills/`
 
 Elke skill bevat:
 - `SKILL.md` - Hoofd documentatie met progressive disclosure
