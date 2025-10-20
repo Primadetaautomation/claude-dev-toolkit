@@ -13,7 +13,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-# Check if required tools are installed
+# check_tool checks whether a command (first arg) exists in PATH; if missing it echoes a yellow warning including the command and the provided check name (second arg) and returns 1, otherwise returns 0.
 check_tool() {
     if ! command -v $1 &> /dev/null; then
         echo -e "${YELLOW}⚠️  $1 not found, skipping $2${NC}"
