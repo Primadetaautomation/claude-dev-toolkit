@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SKILLS_DIR = path.join(process.env.HOME, '.claude/skills');
+const SKILLS_DIR = path.join(process.env.HOME, '.claude-skills');
 
 // Skill metadata extracted from SKILL.md frontmatter
 const skillMetadata = {
