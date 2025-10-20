@@ -40,9 +40,9 @@ const skillMetadata = {
 };
 
 /**
- * Discover relevant skills based on task description
- * @param {string} taskDescription - User's task or question
- * @returns {string[]} - Array of relevant skill names
+ * Find skills whose trigger keywords appear in the task description (case-insensitive) and return their names sorted by relevance.
+ * @param {string} taskDescription - Task or question text used to match skill trigger keywords.
+ * @returns {string[]} Array of skill names sorted by descending number of trigger matches (most relevant first).
  */
 function discoverSkills(taskDescription) {
   const normalizedTask = taskDescription.toLowerCase();
@@ -65,9 +65,9 @@ function discoverSkills(taskDescription) {
 }
 
 /**
- * Get skills for specific agent
- * @param {string} agentName - Name of the agent
- * @returns {string[]} - Array of relevant skill names
+ * List skills associated with a given agent.
+ * @param {string} agentName - Agent name to match against skill metadata.
+ * @returns {string[]} Array of skill names associated with the given agent.
  */
 function getSkillsForAgent(agentName) {
   return Object.entries(skillMetadata)
@@ -76,26 +76,26 @@ function getSkillsForAgent(agentName) {
 }
 
 /**
- * List all available skills
- * @returns {Object} - Skills metadata
+ * Retrieve metadata for all available skills.
+ * @returns {Object} The skills metadata keyed by skill name, where each value includes `triggers`, `agents`, and `description`.
  */
 function listAllSkills() {
   return skillMetadata;
 }
 
 /**
- * Get skill path
- * @param {string} skillName - Name of the skill
- * @returns {string} - Full path to skill directory
+ * Resolve the filesystem path for a skill directory given its name.
+ * @param {string} skillName - Skill identifier (directory name as used in metadata).
+ * @returns {string} Full path to the skill's directory under SKILLS_DIR.
  */
 function getSkillPath(skillName) {
   return path.join(SKILLS_DIR, skillName);
 }
 
 /**
- * Check if skill exists
- * @param {string} skillName - Name of the skill
- * @returns {boolean}
+ * Determine whether a skill directory with a SKILL.md file exists.
+ * @param {string} skillName - Skill directory name to check.
+ * @returns {boolean} `true` if a directory for the skill exists and contains a `SKILL.md` file, `false` otherwise.
  */
 function skillExists(skillName) {
   const skillPath = getSkillPath(skillName);
@@ -103,10 +103,12 @@ function skillExists(skillName) {
 }
 
 /**
- * Get skill content
- * @param {string} skillName - Name of the skill
- * @param {number} level - Context level (1-3)
- * @returns {string} - Skill content
+ * Load a skill's markdown content composed according to the requested context level.
+ *
+ * @param {string} skillName - Name of the skill directory to load.
+ * @param {number} [level=1] - Context level: 1 returns only SKILL.md; 2 appends other `.md` files in the skill directory; 3 also includes a list of files in the `scripts` directory if present.
+ * @returns {string} The assembled markdown content for the skill.
+ * @throws {Error} If the skill does not exist or its SKILL.md is missing.
  */
 function loadSkill(skillName, level = 1) {
   if (!skillExists(skillName)) {
