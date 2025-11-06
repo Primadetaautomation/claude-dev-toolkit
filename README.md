@@ -19,11 +19,13 @@ A complete development ecosystem previously used as a backup configuration, now 
 ## ⚡ Quick Install
 
 ```bash
-# Add the marketplace
-/plugin marketplace add Primadetaautomation/claude-dev-toolkit
+# Navigate to Claude plugins directory
+cd ~/.claude/plugins
 
-# Install the plugin
-/plugin install claude-dev-toolkit
+# Clone the repository
+git clone https://github.com/Primadetaautomation/claude-dev-toolkit.git
+
+# Restart Claude Code to load the plugin
 ```
 
 **That's it!** All 38 agents, 6 skills, and tools are now available in Claude Code.
@@ -168,8 +170,13 @@ You: "Create E2E tests for my app"
 ## 🔄 Updates
 
 ```bash
-# Check for updates
-/plugin update claude-dev-toolkit
+# Navigate to plugin directory
+cd ~/.claude/plugins/claude-dev-toolkit
+
+# Pull latest changes
+git pull origin main
+
+# Restart Claude Code to apply updates
 ```
 
 ---
@@ -246,11 +253,13 @@ Een compleet development ecosystem dat voorheen als backup configuratie werd geb
 ## ⚡ Snelle Installatie
 
 ```bash
-# Voeg marketplace toe
-/plugin marketplace add Primadetaautomation/claude-dev-toolkit
+# Navigeer naar Claude plugins directory
+cd ~/.claude/plugins
 
-# Installeer de plugin
-/plugin install claude-dev-toolkit
+# Clone de repository
+git clone https://github.com/Primadetaautomation/claude-dev-toolkit.git
+
+# Herstart Claude Code om de plugin te laden
 ```
 
 **Dat is alles!** Alle 38 agents, 6 skills, en tools zijn nu beschikbaar in Claude Code.
@@ -395,8 +404,13 @@ Jij: "Maak E2E tests voor mijn app"
 ## 🔄 Updates
 
 ```bash
-# Check voor updates
-/plugin update claude-dev-toolkit
+# Navigeer naar plugin directory
+cd ~/.claude/plugins/claude-dev-toolkit
+
+# Pull laatste wijzigingen
+git pull origin main
+
+# Herstart Claude Code om updates toe te passen
 ```
 
 ---
