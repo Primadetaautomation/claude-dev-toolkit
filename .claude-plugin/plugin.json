@@ -6,10 +6,7 @@
     "name": "Rick van Beek",
     "url": "https://github.com/Primadetaautomation"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Primadetaautomation/claude-dev-toolkit"
-  },
+  "repository": "https://github.com/Primadetaautomation/claude-dev-toolkit",
   "keywords": [
     "agents",
     "fullstack",
@@ -26,8 +23,5 @@
     "automation",
     "development"
   ],
-  "license": "MIT",
-  "compatibility": {
-    "claude_code": ">=2.0.0"
-  }
+  "license": "MIT"
 }
