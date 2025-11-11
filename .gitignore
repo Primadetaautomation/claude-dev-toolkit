@@ -39,3 +39,6 @@ yarn.lock
 # Personal marketing materials
 ANNOUNCEMENT.md
 SOCIAL_MEDIA_POSTS.md
+
+# Git worktrees (isolated workspaces for agents)
+.worktrees/

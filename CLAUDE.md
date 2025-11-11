@@ -191,6 +191,36 @@ Herkenbare zinnen:
 - **B-2 (MUST)** Code review voor merge naar main.
 - **B-3 (SHOULD)** PR's max ±300 regels.
 
+### Git Worktrees
+
+**Worktree Directory**: `.worktrees/` (project-local, hidden)
+
+**Voor Agents:**
+- Automatisch worktrees aanmaken in `.worktrees/<branch-name>/` voor feature development
+- Directory staat in `.gitignore` - veilig te gebruiken
+- Elke worktree krijgt eigen dependency installatie
+
+**Wanneer agents worktrees gebruiken:**
+- ✅ Feature development na brainstorming approval
+- ✅ Multi-step implementation plans uitvoeren
+- ✅ Features die isolatie vereisen van huidige workspace
+- ❌ Snelle fixes op huidige branch
+- ❌ Simpele file edits of documentatie updates
+
+**Setup (automatisch door agents):**
+```bash
+git worktree add .worktrees/<branch-name> -b <branch-name>
+cd .worktrees/<branch-name>
+npm install  # Auto-detect dependencies
+npm test     # Verify clean baseline
+```
+
+**Cleanup na feature:**
+```bash
+git worktree remove .worktrees/<branch-name>
+git branch -D <branch-name>  # Optioneel
+```
+
 ---
 
 ## 7 — Context & Memory Management
