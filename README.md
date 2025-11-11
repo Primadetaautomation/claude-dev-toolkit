@@ -227,6 +227,7 @@ MIT License - Free to use and modify
 
 - **GitHub**: https://github.com/Primadetaautomation/claude-dev-toolkit
 - **Issues**: https://github.com/Primadetaautomation/claude-dev-toolkit/issues
+- **Primadata Marketplace**: https://github.com/Primadetaautomation/primadata-marketplace - Enhanced plugin marketplace with additional tools and integrations
 
 ---
 
@@ -438,6 +439,7 @@ MIT License - Gratis te gebruiken en aanpassen
 
 - **GitHub**: https://github.com/Primadetaautomation/claude-dev-toolkit
 - **Issues**: https://github.com/Primadetaautomation/claude-dev-toolkit/issues
+- **Primadata Marketplace**: https://github.com/Primadetaautomation/primadata-marketplace - Uitgebreide plugin marketplace met extra tools en integraties
 
 ---
 
